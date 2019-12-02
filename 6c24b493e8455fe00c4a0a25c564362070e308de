@@ -134,6 +134,29 @@
     },
     {
       "key": {
+        "uuid": "91190247_ba6b8ebb",
+        "filename": "api/src/main/java/org/opencord/bng/BngStatisticsService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-02T22:40:45Z",
+      "side": 1,
+      "message": "I think you can call this BngStatsService to be more consistent with other stats-related API",
+      "range": {
+        "startLine": 27,
+        "startChar": 17,
+        "endLine": 27,
+        "endChar": 37
+      },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c98655a9_9f78f24d",
         "filename": "api/src/main/java/org/opencord/bng/BngStatisticsService.java",
         "patchSetId": 2
@@ -568,6 +591,184 @@
         "startChar": 2,
         "endLine": 115,
         "endChar": 72
+      },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ea0cc85_2ac4a391",
+        "filename": "app/src/main/java/org/opencord/bng/BngManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-02T22:40:45Z",
+      "side": 1,
+      "message": "An app in ONOS is a collection of components, so defining this one the application is wrong. Also I think you should remove references to pppoe.",
+      "range": {
+        "startLine": 78,
+        "startChar": 2,
+        "endLine": 79,
+        "endChar": 64
+      },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ef6997f_9792caea",
+        "filename": "app/src/main/java/org/opencord/bng/BngManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-02T22:40:45Z",
+      "side": 1,
+      "message": "Should these attributes be protected? I never understood what\u0027s the best way of defining osgi service references, but conventions suggest to use protected.",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 44
+      },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "275c475a_62589c48",
+        "filename": "app/src/main/java/org/opencord/bng/SimpleAttachmentEventHandler.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-02T22:40:45Z",
+      "side": 1,
+      "message": "Would it make sense to generate the attachment ID from some immutable attachment attributes? Say mac addres, pppoe session ID, etc? Would there be any benefit? E.g. support for free for duplicate detection where two attachments have the same mac address / pppoe session ID. Just wondering if you gave it any thought.",
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "873817f1_f11cbe9d",
+        "filename": "app/src/main/java/org/opencord/bng/SimpleAttachmentEventHandler.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-02T22:40:45Z",
+      "side": 1,
+      "message": "If there are limits on the maximum value for an attachment ID, it feels like this would specific to each ASG implementation (i.e. the P4 program). In this case, it should be up to BngProgrammable implementation to compute an ID (consider the previous comment for a stateless way to generate such IDs). If you prefer to tackle this problem later, can you please create a SEBA Jira issue here: \nhttps://jira.opencord.org/projects/SEBA/issues/SEBA-884?filter\u003dallopenissues",
+      "range": {
+        "startLine": 134,
+        "startChar": 68,
+        "endLine": 134,
+        "endChar": 92
+      },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0fa1734a_96a31a2e",
+        "filename": "app/src/main/java/org/opencord/bng/attachment/PppoeRelayAttachmentInfo.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-02T22:40:45Z",
+      "side": 1,
+      "message": "Jus curious - can\u0027t you re-use the PppoeAttachment class instead of defining one with just a subset of the atttributes?",
+      "range": {
+        "startLine": 26,
+        "startChar": 13,
+        "endLine": 26,
+        "endChar": 37
+      },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ec65d0e_d7f3f79d",
+        "filename": "app/src/main/java/org/opencord/bng/events/PppoeAttachmentEventInfo.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-02T22:40:45Z",
+      "side": 1,
+      "message": "Same as my previous comment, this seems related to Kafka. Kafka-specfic things should go in the Kafka app. This class should only expose getters, consumed by the kafka app to generate the JSON blob.",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 5
+      },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "943d6466_97efbd10",
+        "filename": "app/src/main/java/org/opencord/bng/events/PppoeBngAttachmentEvent.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-02T22:40:45Z",
+      "side": 1,
+      "message": "This feels wrong... I think the type of PppoeBngAttachmentEvent should be PppoeAttachmentEventInfo.Type, i.e. SESSION_INIT, etc.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 5
+      },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d525ccfd_9445170d",
+        "filename": "app/src/main/java/org/opencord/bng/events/PppoeBngAttachmentEventListener.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-02T22:40:45Z",
+      "side": 1,
+      "message": "Perhaps this should go in the API module? The Kafka app (consumer of such events), should only depend on the API module.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 1
       },
       "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
       "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
