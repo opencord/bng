@@ -1,0 +1,577 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4c7d3b12_c4a171ad",
+        "filename": "api/src/main/java/org/opencord/bng/BngService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-02T22:13:42Z",
+      "side": 1,
+      "message": "In ONOS (and I think it\u0027s a best practice in general), the first verb of a method javadoc usually uses the third person singular, i.e. (This method) Registers...",
+      "range": {
+        "startLine": 32,
+        "startChar": 7,
+        "endLine": 32,
+        "endChar": 15
+      },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dfaafe6a_b8691984",
+        "filename": "api/src/main/java/org/opencord/bng/BngService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-02T22:13:42Z",
+      "side": 1,
+      "message": "The wording \"BNG programmable\" is confusing here. I think you can remove the first sentence before the comma, and simply say \"It will also trigger the termination of the attachment user traffic on the ASG device\".",
+      "range": {
+        "startLine": 33,
+        "startChar": 46,
+        "endLine": 34,
+        "endChar": 16
+      },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "35d63b5b_8998abb0",
+        "filename": "api/src/main/java/org/opencord/bng/BngService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-02T22:13:42Z",
+      "side": 1,
+      "message": "I would call this method setupAttachment. IMO it conveys better the fact that calling this method doesn\u0027t just update state on the app (which is what I get from \"register\") but also setup configuration to enable termination of traffic.",
+      "range": {
+        "startLine": 39,
+        "startChar": 9,
+        "endLine": 39,
+        "endChar": 17
+      },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "edf038d2_ca3ec858",
+        "filename": "api/src/main/java/org/opencord/bng/BngService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-02T22:13:42Z",
+      "side": 1,
+      "message": "Same here, this sentence can be removed",
+      "range": {
+        "startLine": 42,
+        "startChar": 53,
+        "endLine": 43,
+        "endChar": 18
+      },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ec9b270_64c51e51",
+        "filename": "api/src/main/java/org/opencord/bng/BngService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-02T22:13:42Z",
+      "side": 1,
+      "message": "Is this really needed? Exposing a driver\u0027s behavior from a northbound API doesn\u0027t feel right. Perhaps returning the ASG device ID makes more sense? What if we need to support multiple ASGs? I would remove this method if not strictly needed.",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 41
+      },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c60c5c59_69f5aede",
+        "filename": "api/src/main/java/org/opencord/bng/BngStatisticsService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-02T22:13:42Z",
+      "side": 1,
+      "message": "Missing Javadoc",
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c98655a9_9f78f24d",
+        "filename": "api/src/main/java/org/opencord/bng/BngStatisticsService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-02T22:13:42Z",
+      "side": 1,
+      "message": "This can be removed. A consumer of this API doesn\u0027t/shouldn\u0027t know/care about the internal implementation which is based on the BngProgrammable behavior. I would be happy by simply knowing that this method is meaningful only if the given attachment is known by the app.",
+      "range": {
+        "startLine": 32,
+        "startChar": 30,
+        "endLine": 32,
+        "endChar": 78
+      },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2d52864_c23d01c4",
+        "filename": "api/src/main/java/org/opencord/bng/BngStatisticsService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-02T22:13:42Z",
+      "side": 1,
+      "message": "I think you should pass just the attachment ID here as it makes it clear that you care about a specific attachment independently of its state (which is represented by all attributes other than attachment ID).",
+      "range": {
+        "startLine": 41,
+        "startChar": 89,
+        "endLine": 41,
+        "endChar": 99
+      },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0e4a66f_cfcfdc22",
+        "filename": "api/src/main/java/org/opencord/bng/BngStatisticsService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-02T22:13:42Z",
+      "side": 1,
+      "message": "The adverb \"correctly\" here is ambiguous, as the meaning of \"correct registration\" is not defined anywhere in this context. You can simply say \"Returns the aggregate statistics related to attachments that are not known by this app, e.g., packets that are sent from an attachment while the attachment is negotiating the session.\"",
+      "range": {
+        "startLine": 44,
+        "startChar": 64,
+        "endLine": 44,
+        "endChar": 73
+      },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e7cd21fe_9ec956aa",
+        "filename": "api/src/main/java/org/opencord/bng/BngStatsProviderService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-02T22:13:42Z",
+      "side": 1,
+      "message": "missing javadoc",
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6fd05f12_8bbbd91b",
+        "filename": "api/src/main/java/org/opencord/bng/events/AttachmentEventInfo.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-02T22:13:42Z",
+      "side": 1,
+      "message": "Missing javadoc",
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "80df19e6_955a077a",
+        "filename": "api/src/main/java/org/opencord/bng/events/BngAttachmentEvent.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-02T22:13:42Z",
+      "side": 1,
+      "message": "These two sentences are redundant. You could say more concisely \"Signals attachment-level event , e.g. ...\"",
+      "range": {
+        "startLine": 22,
+        "startChar": 3,
+        "endLine": 22,
+        "endChar": 78
+      },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "924501ee_87244e10",
+        "filename": "api/src/main/java/org/opencord/bng/events/BngAttachmentEvent.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-02T22:13:42Z",
+      "side": 1,
+      "message": "Missing description. What is T?",
+      "range": {
+        "startLine": 24,
+        "startChar": 3,
+        "endLine": 25,
+        "endChar": 13
+      },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eea9d821_4d263a38",
+        "filename": "api/src/main/java/org/opencord/bng/events/BngAttachmentEvent.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-02T22:13:42Z",
+      "side": 1,
+      "message": "Following ONOS Event terminology, this should be called AttachmentEventSubject, and S instead of E",
+      "range": {
+        "startLine": 27,
+        "startChar": 57,
+        "endLine": 27,
+        "endChar": 86
+      },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0ea8f16e_e8f38639",
+        "filename": "api/src/main/java/org/opencord/bng/events/BngAttachmentEvent.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-02T22:13:42Z",
+      "side": 1,
+      "message": "Missing Javadoc",
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "940a8280_656441a2",
+        "filename": "api/src/main/java/org/opencord/bng/events/BngStatsEvent.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-02T22:13:42Z",
+      "side": 1,
+      "message": "I think it would be more consistent with the rest of the documentation if you refer to attachment-related statistics events, rather than BNG-related. Also, the word event is redundant (it appears twice), I think a better wording could be \"Represents an event related to attachment-level statistics\"",
+      "range": {
+        "startLine": 22,
+        "startChar": 3,
+        "endLine": 22,
+        "endChar": 54
+      },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d87d153_de828bb5",
+        "filename": "api/src/main/java/org/opencord/bng/events/BngStatsEvent.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-02T22:13:42Z",
+      "side": 1,
+      "message": "Should be BngStatsEventSubject",
+      "range": {
+        "startLine": 25,
+        "startChar": 47,
+        "endLine": 25,
+        "endChar": 64
+      },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a0f1aad6_6e8381d3",
+        "filename": "api/src/main/java/org/opencord/bng/events/BngStatsEvent.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-02T22:13:42Z",
+      "side": 1,
+      "message": "Missing javadoc",
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "881a669a_206bc680",
+        "filename": "api/src/main/java/org/opencord/bng/events/BngStatsEvent.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-02T22:13:42Z",
+      "side": 1,
+      "message": "Usually, event-related types use names that include the subject type/name and a verb. In this case, I would use \"STATS_UPDATED\" since it signals the fact that the statistics for a given attachment have been updated (wrt to some previous stats)",
+      "range": {
+        "startLine": 35,
+        "startChar": 8,
+        "endLine": 35,
+        "endChar": 18
+      },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7895325a_64d8ec0e",
+        "filename": "api/src/main/java/org/opencord/bng/events/BngStatsEventInfo.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-02T22:13:42Z",
+      "side": 1,
+      "message": "Should be BngStatsEventSubject",
+      "range": {
+        "startLine": 39,
+        "startChar": 13,
+        "endLine": 39,
+        "endChar": 30
+      },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b97a453_d2e7229a",
+        "filename": "api/src/main/java/org/opencord/bng/events/BngStatsEventInfo.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-02T22:13:42Z",
+      "side": 1,
+      "message": "Missing Javadoc",
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "12202d3b_51f83bd0",
+        "filename": "api/src/main/java/org/opencord/bng/events/BngStatsEventInfo.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-02T22:13:42Z",
+      "side": 1,
+      "message": "If I\u0027m not mistaken we agreed to drop subscriber-based terminology and instead refer to attachment. If that\u0027s the case, then this class needs to be updated accordingly.",
+      "range": {
+        "startLine": 41,
+        "startChar": 32,
+        "endLine": 41,
+        "endChar": 43
+      },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0eaeb3a_25eae6ad",
+        "filename": "api/src/main/java/org/opencord/bng/events/BngStatsEventInfo.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-02T22:13:42Z",
+      "side": 1,
+      "message": "private final?",
+      "range": {
+        "startLine": 55,
+        "startChar": 4,
+        "endLine": 55,
+        "endChar": 70
+      },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1111b9d1_680d3e09",
+        "filename": "api/src/main/java/org/opencord/bng/events/BngStatsEventInfo.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-02T22:13:42Z",
+      "side": 1,
+      "message": "Missing javadoc",
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e670611_89387000",
+        "filename": "api/src/main/java/org/opencord/bng/events/BngStatsEventInfo.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-02T22:13:42Z",
+      "side": 1,
+      "message": "Missing javadoc. But more importantly, passing the host service here doesn\u0027t feel right. Instead, whoever is creating instances of this class should do it by providing a host at constructor time, then this method should have no argument but simply return a JSON representation of its internal final state. Moreover, the fact that you use hosts to populate stats event is an implementation detail and for this reason, I would argue this class should probably go in the app module rather than the API one.",
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b8970ba_97ab649d",
+        "filename": "api/src/main/java/org/opencord/bng/events/BngStatsEventInfo.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-02T22:13:42Z",
+      "side": 1,
+      "message": "I think transformation to a JSON blob should be up to the kafka app. Instead, you should provide getters for all attributes.",
+      "range": {
+        "startLine": 67,
+        "startChar": 11,
+        "endLine": 67,
+        "endChar": 19
+      },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b44c6b84_a41c693a",
+        "filename": "api/src/main/java/org/opencord/bng/events/BngStatsEventInfo.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-02T22:13:42Z",
+      "side": 1,
+      "message": "is this fixme still valid?",
+      "range": {
+        "startLine": 115,
+        "startChar": 2,
+        "endLine": 115,
+        "endChar": 72
+      },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    }
+  ]
+}
