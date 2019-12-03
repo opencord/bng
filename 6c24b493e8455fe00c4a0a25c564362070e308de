@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4628d9df_cdd14c3c",
+        "filename": "api/src/main/java/org/opencord/bng/BngService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-03T18:36:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c7d3b12_c4a171ad",
+      "range": {
+        "startLine": 32,
+        "startChar": 7,
+        "endLine": 32,
+        "endChar": 15
+      },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dfaafe6a_b8691984",
         "filename": "api/src/main/java/org/opencord/bng/BngService.java",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-12-02T22:13:42Z",
       "side": 1,
       "message": "The wording \"BNG programmable\" is confusing here. I think you can remove the first sentence before the comma, and simply say \"It will also trigger the termination of the attachment user traffic on the ASG device\".",
+      "range": {
+        "startLine": 33,
+        "startChar": 46,
+        "endLine": 34,
+        "endChar": 16
+      },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4feee826_f143f5ec",
+        "filename": "api/src/main/java/org/opencord/bng/BngService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-03T18:36:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfaafe6a_b8691984",
       "range": {
         "startLine": 33,
         "startChar": 46,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "989bff67_c5186c10",
+        "filename": "api/src/main/java/org/opencord/bng/BngService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-03T18:36:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35d63b5b_8998abb0",
+      "range": {
+        "startLine": 39,
+        "startChar": 9,
+        "endLine": 39,
+        "endChar": 17
+      },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "edf038d2_ca3ec858",
         "filename": "api/src/main/java/org/opencord/bng/BngService.java",
         "patchSetId": 2
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "0f435e5f_3b76857c",
+        "filename": "api/src/main/java/org/opencord/bng/BngService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-03T18:36:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "edf038d2_ca3ec858",
+      "range": {
+        "startLine": 42,
+        "startChar": 53,
+        "endLine": 43,
+        "endChar": 18
+      },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ec9b270_64c51e51",
         "filename": "api/src/main/java/org/opencord/bng/BngService.java",
         "patchSetId": 2
@@ -105,6 +201,30 @@
       "writtenOn": "2019-12-02T22:13:42Z",
       "side": 1,
       "message": "Is this really needed? Exposing a driver\u0027s behavior from a northbound API doesn\u0027t feel right. Perhaps returning the ASG device ID makes more sense? What if we need to support multiple ASGs? I would remove this method if not strictly needed.",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 41
+      },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "209e6c4a_aa6d9496",
+        "filename": "api/src/main/java/org/opencord/bng/BngService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-03T18:36:27Z",
+      "side": 1,
+      "message": "Yes, maybe is better to just return the device ID. I added this method because the BngStatsService needs to know which is the BngProgrammable device to read the stats from.",
+      "parentUuid": "3ec9b270_64c51e51",
       "range": {
         "startLine": 66,
         "startChar": 0,
@@ -157,6 +277,48 @@
     },
     {
       "key": {
+        "uuid": "380b23e3_37d57af3",
+        "filename": "api/src/main/java/org/opencord/bng/BngStatisticsService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-03T18:36:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c60c5c59_69f5aede",
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d541c02c_467317e1",
+        "filename": "api/src/main/java/org/opencord/bng/BngStatisticsService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-03T18:36:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91190247_ba6b8ebb",
+      "range": {
+        "startLine": 27,
+        "startChar": 17,
+        "endLine": 27,
+        "endChar": 37
+      },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c98655a9_9f78f24d",
         "filename": "api/src/main/java/org/opencord/bng/BngStatisticsService.java",
         "patchSetId": 2
@@ -168,6 +330,30 @@
       "writtenOn": "2019-12-02T22:13:42Z",
       "side": 1,
       "message": "This can be removed. A consumer of this API doesn\u0027t/shouldn\u0027t know/care about the internal implementation which is based on the BngProgrammable behavior. I would be happy by simply knowing that this method is meaningful only if the given attachment is known by the app.",
+      "range": {
+        "startLine": 32,
+        "startChar": 30,
+        "endLine": 32,
+        "endChar": 78
+      },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d804473e_51be2337",
+        "filename": "api/src/main/java/org/opencord/bng/BngStatisticsService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-03T18:36:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c98655a9_9f78f24d",
       "range": {
         "startLine": 32,
         "startChar": 30,
@@ -203,6 +389,30 @@
     },
     {
       "key": {
+        "uuid": "44d4bcd0_34056501",
+        "filename": "api/src/main/java/org/opencord/bng/BngStatisticsService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-03T18:36:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2d52864_c23d01c4",
+      "range": {
+        "startLine": 41,
+        "startChar": 89,
+        "endLine": 41,
+        "endChar": 99
+      },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0e4a66f_cfcfdc22",
         "filename": "api/src/main/java/org/opencord/bng/BngStatisticsService.java",
         "patchSetId": 2
@@ -214,6 +424,30 @@
       "writtenOn": "2019-12-02T22:13:42Z",
       "side": 1,
       "message": "The adverb \"correctly\" here is ambiguous, as the meaning of \"correct registration\" is not defined anywhere in this context. You can simply say \"Returns the aggregate statistics related to attachments that are not known by this app, e.g., packets that are sent from an attachment while the attachment is negotiating the session.\"",
+      "range": {
+        "startLine": 44,
+        "startChar": 64,
+        "endLine": 44,
+        "endChar": 73
+      },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0df53d99_bc3552b5",
+        "filename": "api/src/main/java/org/opencord/bng/BngStatisticsService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-03T18:36:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0e4a66f_cfcfdc22",
       "range": {
         "startLine": 44,
         "startChar": 64,
@@ -243,6 +477,24 @@
     },
     {
       "key": {
+        "uuid": "6efaa5af_08268fd8",
+        "filename": "api/src/main/java/org/opencord/bng/BngStatsProviderService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-03T18:36:27Z",
+      "side": 1,
+      "message": "Removed interface. It was a code from previous implementation.\nDone",
+      "parentUuid": "e7cd21fe_9ec956aa",
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6fd05f12_8bbbd91b",
         "filename": "api/src/main/java/org/opencord/bng/events/AttachmentEventInfo.java",
         "patchSetId": 2
@@ -260,6 +512,24 @@
     },
     {
       "key": {
+        "uuid": "5967f0ba_ded852f5",
+        "filename": "api/src/main/java/org/opencord/bng/events/AttachmentEventInfo.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-03T18:36:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fd05f12_8bbbd91b",
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "80df19e6_955a077a",
         "filename": "api/src/main/java/org/opencord/bng/events/BngAttachmentEvent.java",
         "patchSetId": 2
@@ -271,6 +541,30 @@
       "writtenOn": "2019-12-02T22:13:42Z",
       "side": 1,
       "message": "These two sentences are redundant. You could say more concisely \"Signals attachment-level event , e.g. ...\"",
+      "range": {
+        "startLine": 22,
+        "startChar": 3,
+        "endLine": 22,
+        "endChar": 78
+      },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dde928a8_c99075fb",
+        "filename": "api/src/main/java/org/opencord/bng/events/BngAttachmentEvent.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-03T18:36:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80df19e6_955a077a",
       "range": {
         "startLine": 22,
         "startChar": 3,
@@ -306,6 +600,30 @@
     },
     {
       "key": {
+        "uuid": "351629a1_dad1898a",
+        "filename": "api/src/main/java/org/opencord/bng/events/BngAttachmentEvent.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-03T18:36:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "924501ee_87244e10",
+      "range": {
+        "startLine": 24,
+        "startChar": 3,
+        "endLine": 25,
+        "endChar": 13
+      },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eea9d821_4d263a38",
         "filename": "api/src/main/java/org/opencord/bng/events/BngAttachmentEvent.java",
         "patchSetId": 2
@@ -317,6 +635,30 @@
       "writtenOn": "2019-12-02T22:13:42Z",
       "side": 1,
       "message": "Following ONOS Event terminology, this should be called AttachmentEventSubject, and S instead of E",
+      "range": {
+        "startLine": 27,
+        "startChar": 57,
+        "endLine": 27,
+        "endChar": 86
+      },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c9ad27e3_77e89014",
+        "filename": "api/src/main/java/org/opencord/bng/events/BngAttachmentEvent.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-03T18:36:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eea9d821_4d263a38",
       "range": {
         "startLine": 27,
         "startChar": 57,
@@ -346,6 +688,24 @@
     },
     {
       "key": {
+        "uuid": "5181cdc4_98c45bb0",
+        "filename": "api/src/main/java/org/opencord/bng/events/BngAttachmentEvent.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-03T18:36:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ea8f16e_e8f38639",
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "940a8280_656441a2",
         "filename": "api/src/main/java/org/opencord/bng/events/BngStatsEvent.java",
         "patchSetId": 2
@@ -357,6 +717,30 @@
       "writtenOn": "2019-12-02T22:13:42Z",
       "side": 1,
       "message": "I think it would be more consistent with the rest of the documentation if you refer to attachment-related statistics events, rather than BNG-related. Also, the word event is redundant (it appears twice), I think a better wording could be \"Represents an event related to attachment-level statistics\"",
+      "range": {
+        "startLine": 22,
+        "startChar": 3,
+        "endLine": 22,
+        "endChar": 54
+      },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a26cc84c_ac2ee41d",
+        "filename": "api/src/main/java/org/opencord/bng/events/BngStatsEvent.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-03T18:36:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "940a8280_656441a2",
       "range": {
         "startLine": 22,
         "startChar": 3,
@@ -392,6 +776,30 @@
     },
     {
       "key": {
+        "uuid": "4cba4a2e_acbff1fc",
+        "filename": "api/src/main/java/org/opencord/bng/events/BngStatsEvent.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-03T18:36:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d87d153_de828bb5",
+      "range": {
+        "startLine": 25,
+        "startChar": 47,
+        "endLine": 25,
+        "endChar": 64
+      },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a0f1aad6_6e8381d3",
         "filename": "api/src/main/java/org/opencord/bng/events/BngStatsEvent.java",
         "patchSetId": 2
@@ -409,6 +817,24 @@
     },
     {
       "key": {
+        "uuid": "4ce2b389_15acb206",
+        "filename": "api/src/main/java/org/opencord/bng/events/BngStatsEvent.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-03T18:36:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0f1aad6_6e8381d3",
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "881a669a_206bc680",
         "filename": "api/src/main/java/org/opencord/bng/events/BngStatsEvent.java",
         "patchSetId": 2
@@ -420,6 +846,30 @@
       "writtenOn": "2019-12-02T22:13:42Z",
       "side": 1,
       "message": "Usually, event-related types use names that include the subject type/name and a verb. In this case, I would use \"STATS_UPDATED\" since it signals the fact that the statistics for a given attachment have been updated (wrt to some previous stats)",
+      "range": {
+        "startLine": 35,
+        "startChar": 8,
+        "endLine": 35,
+        "endChar": 18
+      },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "156c5278_f631473e",
+        "filename": "api/src/main/java/org/opencord/bng/events/BngStatsEvent.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-03T18:36:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "881a669a_206bc680",
       "range": {
         "startLine": 35,
         "startChar": 8,
@@ -472,6 +922,48 @@
     },
     {
       "key": {
+        "uuid": "15f81b6a_ebdbda57",
+        "filename": "api/src/main/java/org/opencord/bng/events/BngStatsEventInfo.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-03T18:36:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7895325a_64d8ec0e",
+      "range": {
+        "startLine": 39,
+        "startChar": 13,
+        "endLine": 39,
+        "endChar": 30
+      },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4c15aff_7f9dddb3",
+        "filename": "api/src/main/java/org/opencord/bng/events/BngStatsEventInfo.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-03T18:36:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b97a453_d2e7229a",
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "12202d3b_51f83bd0",
         "filename": "api/src/main/java/org/opencord/bng/events/BngStatsEventInfo.java",
         "patchSetId": 2
@@ -483,6 +975,30 @@
       "writtenOn": "2019-12-02T22:13:42Z",
       "side": 1,
       "message": "If I\u0027m not mistaken we agreed to drop subscriber-based terminology and instead refer to attachment. If that\u0027s the case, then this class needs to be updated accordingly.",
+      "range": {
+        "startLine": 41,
+        "startChar": 32,
+        "endLine": 41,
+        "endChar": 43
+      },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "91513ab6_cbc37dbc",
+        "filename": "api/src/main/java/org/opencord/bng/events/BngStatsEventInfo.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-03T18:36:27Z",
+      "side": 1,
+      "message": "Yes, you are right. I\u0027ll change the name and move those fields to the Kafka-App",
+      "parentUuid": "12202d3b_51f83bd0",
       "range": {
         "startLine": 41,
         "startChar": 32,
@@ -518,6 +1034,30 @@
     },
     {
       "key": {
+        "uuid": "51609f1d_456b9164",
+        "filename": "api/src/main/java/org/opencord/bng/events/BngStatsEventInfo.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-03T18:36:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0eaeb3a_25eae6ad",
+      "range": {
+        "startLine": 55,
+        "startChar": 4,
+        "endLine": 55,
+        "endChar": 70
+      },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1111b9d1_680d3e09",
         "filename": "api/src/main/java/org/opencord/bng/events/BngStatsEventInfo.java",
         "patchSetId": 2
@@ -529,6 +1069,24 @@
       "writtenOn": "2019-12-02T22:13:42Z",
       "side": 1,
       "message": "Missing javadoc",
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c1d149a0_d6482a35",
+        "filename": "api/src/main/java/org/opencord/bng/events/BngStatsEventInfo.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-03T18:36:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1111b9d1_680d3e09",
       "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
       "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
       "unresolved": false
@@ -569,6 +1127,24 @@
         "endLine": 67,
         "endChar": 19
       },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "63b009c8_4db5a0e9",
+        "filename": "api/src/main/java/org/opencord/bng/events/BngStatsEventInfo.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-03T18:36:27Z",
+      "side": 1,
+      "message": "I\u0027ll move the implementation to the Kafka app. I will not use the hostService, all the information are now inside the PPPoEAttachment that can be retrieved from the BngService.",
+      "parentUuid": "5e670611_89387000",
       "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
       "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
       "unresolved": false
@@ -644,6 +1220,30 @@
     },
     {
       "key": {
+        "uuid": "3b1f9f80_0b5f13ed",
+        "filename": "app/src/main/java/org/opencord/bng/BngManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-03T18:36:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ef6997f_9792caea",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 44
+      },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "275c475a_62589c48",
         "filename": "app/src/main/java/org/opencord/bng/SimpleAttachmentEventHandler.java",
         "patchSetId": 2
@@ -661,6 +1261,24 @@
     },
     {
       "key": {
+        "uuid": "529fafda_2f695b85",
+        "filename": "app/src/main/java/org/opencord/bng/SimpleAttachmentEventHandler.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-03T18:36:27Z",
+      "side": 1,
+      "message": "Yes, I was thinking of going for a similar approach, but it\u0027s still not clear which fields uniquely identify an attachment, so I opted for an ID generator.",
+      "parentUuid": "275c475a_62589c48",
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "873817f1_f11cbe9d",
         "filename": "app/src/main/java/org/opencord/bng/SimpleAttachmentEventHandler.java",
         "patchSetId": 2
@@ -672,6 +1290,30 @@
       "writtenOn": "2019-12-02T22:40:45Z",
       "side": 1,
       "message": "If there are limits on the maximum value for an attachment ID, it feels like this would specific to each ASG implementation (i.e. the P4 program). In this case, it should be up to BngProgrammable implementation to compute an ID (consider the previous comment for a stateless way to generate such IDs). If you prefer to tackle this problem later, can you please create a SEBA Jira issue here: \nhttps://jira.opencord.org/projects/SEBA/issues/SEBA-884?filter\u003dallopenissues",
+      "range": {
+        "startLine": 134,
+        "startChar": 68,
+        "endLine": 134,
+        "endChar": 92
+      },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "07cfc312_c886229c",
+        "filename": "app/src/main/java/org/opencord/bng/SimpleAttachmentEventHandler.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-03T18:36:27Z",
+      "side": 1,
+      "message": "The attachment ID is used by the FabricBngProgrammable as the Line ID.\nThe main problem is that Line ID is used as the index to access counters in the data plane. For this reason, I added the modulo operation.\nI agree with you that this is implementation-specific, but up to now, I didn\u0027t find a way to generalize it because is still not clear which fields uniquely identify an attachment.\n\nI think we should discuss a stateless way to generate an ID from the control plane perspective.",
+      "parentUuid": "873817f1_f11cbe9d",
       "range": {
         "startLine": 134,
         "startChar": 68,
@@ -730,6 +1372,30 @@
     },
     {
       "key": {
+        "uuid": "b74641dc_468be9c0",
+        "filename": "app/src/main/java/org/opencord/bng/events/PppoeAttachmentEventInfo.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-03T18:36:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ec65d0e_d7f3f79d",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 5
+      },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "943d6466_97efbd10",
         "filename": "app/src/main/java/org/opencord/bng/events/PppoeBngAttachmentEvent.java",
         "patchSetId": 2
@@ -753,6 +1419,30 @@
     },
     {
       "key": {
+        "uuid": "7eb44aa6_9f9f6e55",
+        "filename": "app/src/main/java/org/opencord/bng/events/PppoeBngAttachmentEvent.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-03T18:36:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "943d6466_97efbd10",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 5
+      },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d525ccfd_9445170d",
         "filename": "app/src/main/java/org/opencord/bng/events/PppoeBngAttachmentEventListener.java",
         "patchSetId": 2
@@ -764,6 +1454,30 @@
       "writtenOn": "2019-12-02T22:40:45Z",
       "side": 1,
       "message": "Perhaps this should go in the API module? The Kafka app (consumer of such events), should only depend on the API module.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 1
+      },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa8fb5f3_fd205b9d",
+        "filename": "app/src/main/java/org/opencord/bng/events/PppoeBngAttachmentEventListener.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-03T18:36:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d525ccfd_9445170d",
       "range": {
         "startLine": 19,
         "startChar": 0,
