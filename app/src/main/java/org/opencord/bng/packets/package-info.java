@@ -17,4 +17,4 @@
 /**
  * Packet parser for BNG application.
  */
-package org.opencord.bng.parser;
+package org.opencord.bng.packets;
