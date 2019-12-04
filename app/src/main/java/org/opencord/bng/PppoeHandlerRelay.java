@@ -46,9 +46,10 @@ import org.onosproject.net.packet.PacketProcessor;
 import org.onosproject.net.packet.PacketService;
 import org.opencord.bng.attachment.PppoeAttachment;
 import org.opencord.bng.config.PppoeRelayConfig;
-import org.opencord.bng.parser.Ipcp;
-import org.opencord.bng.parser.Lcp;
-import org.opencord.bng.parser.Pppoe;
+import org.opencord.bng.packets.GenericPpp;
+import org.opencord.bng.packets.Ipcp;
+import org.opencord.bng.packets.PppProtocolType;
+import org.opencord.bng.packets.Pppoe;
 import org.opencord.sadis.SadisService;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
@@ -66,6 +67,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import static org.onosproject.net.config.basics.SubjectFactories.APP_SUBJECT_FACTORY;
+import static org.opencord.bng.packets.PppProtocolType.IPCP;
 
 @Component(immediate = true, service = PppoeBngControlHandler.class)
 public class PppoeHandlerRelay
@@ -168,6 +170,7 @@ public class PppoeHandlerRelay
             return;
         }
         Ethernet eth = context.inPacket().parsed();
+        log.debug(eth.getPayload().toString());
         log.debug("Parsing the PPPoE header");
         //FIXME: PPPoE and above headers are extracted from the ethernet
         // payload. In case we want to modify the PPPoE/upper-layer header, remember to
@@ -205,7 +208,7 @@ public class PppoeHandlerRelay
         StringBuilder logPacketPppoes = new StringBuilder();
         if (Pppoe.isPPPoES(eth)) {
             logPacketPppoes.append("Received PPPoES " +
-                                           Pppoe.PppProtocolType.lookup(pppoe.getPppProtocol()).type() +
+                                           PppProtocolType.lookup(pppoe.getPppProtocol()).type() +
                                            " packet from " + heardOn + ".");
         }
         if (logPacketPppoes.length() > 0) {
@@ -302,7 +305,7 @@ public class PppoeHandlerRelay
         VlanId cTag = VlanId.vlanId(eth.getVlanID());
         VlanId sTag = VlanId.vlanId(eth.getQinQVID());
         PppoeAttachment attInfo = mapSrcMacToAttInfo.get(srcMac);
-        switch (Pppoe.PppProtocolType.lookup(pppoe.getPppProtocol())) {
+        switch (PppProtocolType.lookup(pppoe.getPppProtocol())) {
             case IPCP:
                 // Attachment information should be already present
                 Ipcp ipcp = (Ipcp) pppoe.getPayload();
@@ -342,7 +345,7 @@ public class PppoeHandlerRelay
                                                  PppoeAttachment attInfo) {
         PppoeEvent.EventType eventType = null;
         IpAddress assignedIpAddress = IP_ADDRESS_ZERO;
-        switch (Pppoe.PppProtocolType.lookup(pppoe.getPppProtocol())) {
+        switch (PppProtocolType.lookup(pppoe.getPppProtocol())) {
             case IPCP:
                 Ipcp ipcp = (Ipcp) pppoe.getPayload();
                 if (ipcp.getCode() == Ipcp.ACK) {
@@ -355,12 +358,12 @@ public class PppoeHandlerRelay
 
             case CHAP:
                 // Check if server has correctly authenticated the attachment
-                Lcp chap = (Lcp) pppoe.getPayload();
-                if (chap.getCode() == Lcp.CHAP_CODE_SUCCESS) {
+                GenericPpp chap = (GenericPpp) pppoe.getPayload();
+                if (chap.getCode() == GenericPpp.CHAP_CODE_SUCCESS) {
                     log.info("CHAP authentication success: {}", attInfo.macAddress());
                     eventType = PppoeEvent.EventType.AUTH_SUCCESS;
                 }
-                if (chap.getCode() == Lcp.CHAP_CODE_FAILURE) {
+                if (chap.getCode() == GenericPpp.CHAP_CODE_FAILURE) {
                     log.info("CHAP authentication failed: {}", attInfo.macAddress());
                     eventType = PppoeEvent.EventType.AUTH_FAILURE;
                 }
@@ -368,20 +371,20 @@ public class PppoeHandlerRelay
 
             case PAP:
                 // Check if server has correctly authenticated the attachment
-                Lcp pap = (Lcp) pppoe.getPayload();
-                if (pap.getCode() == Lcp.PAP_AUTH_ACK) {
+                GenericPpp pap = (GenericPpp) pppoe.getPayload();
+                if (pap.getCode() == GenericPpp.PAP_AUTH_ACK) {
                     log.info("PAP authentication success: {}", attInfo.macAddress());
                     eventType = PppoeEvent.EventType.AUTH_SUCCESS;
                 }
-                if (pap.getCode() == Lcp.PAP_AUTH_NACK) {
+                if (pap.getCode() == GenericPpp.PAP_AUTH_NACK) {
                     log.info("PAP authentication failed: {}", attInfo.macAddress());
                     eventType = PppoeEvent.EventType.AUTH_FAILURE;
                 }
                 break;
 
             case LCP:
-                Lcp lcp = (Lcp) pppoe.getPayload();
-                if (lcp.getCode() == Lcp.CODE_TERM_REQ) {
+                GenericPpp lcp = (GenericPpp) pppoe.getPayload();
+                if (lcp.getCode() == GenericPpp.CODE_TERM_REQ) {
                     log.info("LCP Termination request from PPPoE server");
                     eventType = PppoeEvent.EventType.SESSION_TERMINATION;
                 }
