@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.opencord.bng.parser;
+package org.opencord.bng.packets;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.ImmutableMap;
@@ -29,7 +29,6 @@ import org.onlab.packet.IPv6;
 import java.nio.ByteBuffer;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 import static com.google.common.base.MoreObjects.toStringHelper;
 import static org.onlab.packet.PacketUtils.checkHeaderLength;
@@ -43,129 +42,30 @@ public class Pppoe extends BasePacket {
     public static final short TYPE_PPPOED = (short) 0x8863;
     public static final short TYPE_PPPOES = (short) 0x8864;
 
-    /**
-     * List of known PPPoE Discovery types.
-     */
-    public enum PppoeType {
-        PADI(0x9, "padi"),
-        PADO(0x7, "pado"),
-        PADR(0x19, "padr"),
-        PADS(0x65, "pads"),
-        PADT(0xa7, "padt"),
-        SESSION(0x0, "session"),
-        UNKNOWN(0xFF, "unknown");
-
-        private final byte code;
-        private final String type;
-
-        /**
-         * Constructs new PPPoE Discovery types.
-         *
-         * @param code The PPPoED type.
-         * @param type Textual representation of the PPPoED type.
-         */
-        PppoeType(int code, String type) {
-            this.code = (byte) (code & 0xFF);
-            this.type = type;
-        }
-
-        public byte code() {
-            return code;
-        }
-
-        public String type() {
-            return type;
-        }
-
-        public static PppoeType lookup(byte code) {
-            for (PppoeType type : PppoeType.values()) {
-                if (code == type.code()) {
-                    return type;
-                }
-            }
-            return UNKNOWN;
-        }
-    }
-
-    /**
-     * List of known PPP protocols types.
-     */
-    public enum PppProtocolType {
-        LCP(0xc021, "lcp", true),
-        IPCP(0x8021, "ipcp", true),
-        PAP(0xc023, "pap", true),
-        CHAP(0xc223, "chap", true),
-        IPv4(0x0021, "ipv4", false),
-        IPv6(0x0057, "ipv6", false),
-        NO_PROTOCOL(0, "no_proto", true);
-
-        private final short code;
-        private final String type;
-        private final boolean control;
-
-        /**
-         * Constructs new PPP Protocol types.
-         *
-         * @param code    The PPP Protocol type.
-         * @param type    Textual representation of the PPP Protocol type.
-         * @param control True if is control plane packet, False otherwise.
-         */
-        PppProtocolType(int code, String type, boolean control) {
-            this.code = (short) (code & 0xFFFF);
-            this.type = type;
-            this.control = control;
-        }
-
-        public short code() {
-            return this.code;
-        }
-
-        public String type() {
-            return this.type;
-        }
-
-        public boolean control() {
-            return this.control;
-        }
-
-        public static PppProtocolType lookup(short code) {
-            for (PppProtocolType type : PppProtocolType.values()) {
-                if (code == type.code()) {
-                    return type;
-                }
-            }
-            return NO_PROTOCOL;
-        }
-    }
-
-    public static final Map<Short, Deserializer<? extends IPacket>> PROTOCOL_DESERIALIZER_MAP =
+    static final ImmutableMap<Short, Deserializer<? extends IPacket>> PROTOCOL_DESERIALIZER_MAP =
             ImmutableMap.<Short, Deserializer<? extends IPacket>>builder()
-                    .put(PppProtocolType.LCP.code(), Lcp.deserializer())
-                    //FIXME: write the correct parser for PAP and CHAP payload
-                    .put(PppProtocolType.PAP.code(), Lcp.deserializer())
-                    .put(PppProtocolType.CHAP.code(), Lcp.deserializer())
+                    //FIXME: write the correct parser for LCP, PAP, and CHAP
+                    .put(PppProtocolType.LCP.code(), GenericPpp.deserializer())
+                    .put(PppProtocolType.PAP.code(), GenericPpp.deserializer())
+                    .put(PppProtocolType.CHAP.code(), GenericPpp.deserializer())
                     .put(PppProtocolType.IPCP.code(), Ipcp.deserializer())
                     .put(PppProtocolType.IPv4.code(), IPv4.deserializer())
                     .put(PppProtocolType.IPv6.code(), IPv6.deserializer())
                     .build();
-
     // Account of PPPoE standard header
-    private static final int HEADER_LENGTH = 6;
-
+    static final int HEADER_LENGTH = 6;
     // Fields part of PPPoE
-    protected byte version; // 4bit
-    protected byte typeId;  // 4bit
-    protected PppoeType packetType; // 8bit => code in PPPoE header
-    protected short sessionId; // 16bit
-    protected short payloadLength; // 16bit
-
+    private byte version; // 4bit
+    private byte typeId;  // 4bit
+    private PppoeType packetType; // 8bit => code in PPPoE header
+    private short sessionId; // 16bit
+    private short payloadLength; // 16bit
     // FIXME: use PPPProtocol enum type
-    protected short pppProtocol = 0;
-
+    private short pppProtocol = 0;
     //TODO: TLV TAGs (ref. to RFC2516)
-    protected PppoeTlvTag acName = null;
-    protected PppoeTlvTag serviceName = null;
-    protected List<PppoeTlvTag> optionalTagTlvList;
+    private PppoeTlvTag acName = null;
+    private PppoeTlvTag serviceName = null;
+    private List<PppoeTlvTag> optionalTagTlvList;
 
     public Pppoe() {
         super();
@@ -182,12 +82,34 @@ public class Pppoe extends BasePacket {
     }
 
     /**
+     * Set the Packet Type.
+     *
+     * @param type The packet type to set
+     * @return this
+     */
+    public Pppoe setPacketType(PppoeType type) {
+        this.packetType = type;
+        return this;
+    }
+
+    /**
      * Get the session ID.
      *
      * @return the session ID
      */
     public short getSessionId() {
         return this.sessionId;
+    }
+
+    /**
+     * Set the session ID.
+     *
+     * @param sessionId the session ID to set
+     * @return this
+     */
+    public Pppoe setSessionId(short sessionId) {
+        this.sessionId = sessionId;
+        return this;
     }
 
     /**
@@ -220,6 +142,15 @@ public class Pppoe extends BasePacket {
     }
 
     /**
+     * Get the PPPoE version field.
+     *
+     * @return The version field
+     */
+    public byte getVersion() {
+        return this.version;
+    }
+
+    /**
      * Set the version field.
      *
      * @param version version to set
@@ -231,7 +162,16 @@ public class Pppoe extends BasePacket {
     }
 
     /**
-     * Set the type IF.
+     * Get the PPPoE type ID.
+     *
+     * @return The type ID
+     */
+    public short getTypeId() {
+        return this.typeId;
+    }
+
+    /**
+     * Set the type ID.
      *
      * @param typeId Type ID to set
      * @return this
@@ -242,25 +182,12 @@ public class Pppoe extends BasePacket {
     }
 
     /**
-     * Set the Packet Type.
+     * Get the PPPoE payload length header field.
      *
-     * @param type The packet type to set
-     * @return this
+     * @return The payload length
      */
-    public Pppoe setPacketType(PppoeType type) {
-        this.packetType = type;
-        return this;
-    }
-
-    /**
-     * Set the session ID.
-     *
-     * @param sessionId the session ID to set
-     * @return this
-     */
-    public Pppoe setSessionId(short sessionId) {
-        this.sessionId = sessionId;
-        return this;
+    public short getPayloadLength() {
+        return this.payloadLength;
     }
 
     /**
@@ -273,7 +200,6 @@ public class Pppoe extends BasePacket {
         this.payloadLength = payloadLength;
         return this;
     }
-
 
     @Override
     public byte[] serialize() {
@@ -293,7 +219,7 @@ public class Pppoe extends BasePacket {
         bb.put(this.packetType.code);
         bb.putShort(this.sessionId);
         bb.putShort(this.payloadLength);
-        if (this.packetType == PppoeType.SESSION) {
+        if (this.packetType != PppoeType.SESSION) {
             // Only session packet have PPP header
             bb.putShort(this.pppProtocol);
         } else {
@@ -346,11 +272,11 @@ public class Pppoe extends BasePacket {
                     deserializer = Data.deserializer();
                 }
                 int remainingLength = bb.limit() - bb.position();
-                int bytesToRead = (pppoe.payloadLength <= remainingLength) ?
-                        pppoe.payloadLength : remainingLength;
-
-                pppoe.payload = deserializer.deserialize(data, bb.position(), bytesToRead);
-                pppoe.payload.setParent(pppoe);
+                int bytesToRead = Math.min(pppoe.payloadLength - 2, remainingLength);
+                if (bytesToRead > 0) {
+                    pppoe.payload = deserializer.deserialize(data, bb.position(), bytesToRead);
+                    pppoe.payload.setParent(pppoe);
+                }
             } else {
                 // PPPoE Packet is of Discovery type
                 // Parse TLV PPPoED Tags
@@ -362,7 +288,7 @@ public class Pppoe extends BasePacket {
                     if (length - currentIndex < 4) {
                         // Probably the packet was zero-padded to reach the Ethernet minimum length.
                         // Let's skip and accept the packet
-                        // FIXME: is there a smarter way to identify a padded packet?
+                        // FIXME: is there a "smarter" way to identify a padded packet?
                         break;
                     }
                     currentIndex += 4;
@@ -403,73 +329,86 @@ public class Pppoe extends BasePacket {
                 .add("code", Byte.toString(packetType.code))
                 .add("sessionId", Short.toString(sessionId))
                 .add("payloadLength", Short.toString(payloadLength))
-                .add("PPP.protocol", Short.toString(pppProtocol))
                 .toString();
-    }
-
-    /*
-     * (non-Javadoc)
-     *
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
-    @Override
-    public boolean equals(final Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (!(obj instanceof IpcpTlv)) {
-            return false;
-        }
-        final Pppoe other = (Pppoe) obj;
-        if (this.version != other.version) {
-            return false;
-        }
-        if (this.typeId != other.typeId) {
-            return false;
-        }
-        if (this.packetType != other.packetType) {
-            return false;
-        }
-        if (this.sessionId != other.sessionId) {
-            return false;
-        }
-        if (this.payloadLength != other.payloadLength) {
-            return false;
-        }
-        if (this.pppProtocol != other.pppProtocol) {
-            return false;
-        }
-        if (this.acName == null) {
-            if (other.acName != null) {
-                return false;
-            }
-        } else if (!this.acName.equals(other.acName)) {
-            return false;
-        }
-        if (this.serviceName == null) {
-            if (other.serviceName != null) {
-                return false;
-            }
-        } else if (!this.serviceName.equals(other.serviceName)) {
-            return false;
-        }
-        if (!this.optionalTagTlvList.equals(other.optionalTagTlvList)) {
-            return false;
-        }
-        return true;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(super.hashCode(), version, typeId, packetType, sessionId,
-                payloadLength, pppProtocol, acName, serviceName, optionalTagTlvList);
+        return 31 * super.hashCode() +
+                Objects.hashCode(version, typeId, packetType,
+                                 sessionId, payloadLength, pppProtocol,
+                                 acName, serviceName, optionalTagTlvList);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        if (!super.equals(obj)) {
+            return false;
+        }
+        final Pppoe other = (Pppoe) obj;
+        return Objects.equal(this.version, other.version)
+                && Objects.equal(this.typeId, other.typeId)
+                && Objects.equal(this.packetType, other.packetType)
+                && Objects.equal(this.sessionId, other.sessionId)
+                && Objects.equal(this.payloadLength, other.payloadLength)
+                && Objects.equal(this.pppProtocol, other.pppProtocol)
+                && Objects.equal(this.acName, other.acName)
+                && Objects.equal(this.serviceName, other.serviceName)
+                && Objects.equal(this.optionalTagTlvList, other.optionalTagTlvList);
     }
 
     /**
-     * Check if the passed Ethernet packet is PPPoE Service.
+     * PPPoE Discovery types.
+     */
+    public enum PppoeType {
+        PADI(0x9, "padi"),
+        PADO(0x7, "pado"),
+        PADR(0x19, "padr"),
+        PADS(0x65, "pads"),
+        PADT(0xa7, "padt"),
+        SESSION(0x0, "session"),
+        UNKNOWN(0xFF, "unknown");
+
+        private final byte code;
+        private final String type;
+
+        /**
+         * Constructs new PPPoE Discovery types.
+         *
+         * @param code The PPPoED type.
+         * @param type Textual representation of the PPPoED type.
+         */
+        PppoeType(int code, String type) {
+            this.code = (byte) (code & 0xFF);
+            this.type = type;
+        }
+
+        public static PppoeType lookup(byte code) {
+            for (PppoeType type : PppoeType.values()) {
+                if (code == type.code()) {
+                    return type;
+                }
+            }
+            return UNKNOWN;
+        }
+
+        public byte code() {
+            return code;
+        }
+
+        public String type() {
+            return type;
+        }
+    }
+
+    /**
+     * Checks if the passed Ethernet packet is PPPoE Service.
      *
      * @param eth Packet to check
      * @return True if the packet contains PPPoE Service header
@@ -479,7 +418,7 @@ public class Pppoe extends BasePacket {
     }
 
     /**
-     * Check if the passed Ethernet packet is PPPoE Discovery.
+     * Checks if the passed Ethernet packet is PPPoE Discovery.
      *
      * @param eth Packet to check
      * @return True if the packet contains PPPoE Discovery header

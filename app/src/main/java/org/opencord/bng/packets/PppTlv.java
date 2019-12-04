@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.opencord.bng.parser;
+package org.opencord.bng.packets;
 
 import com.google.common.base.Objects;
 import org.onlab.packet.DeserializationException;
@@ -23,108 +23,108 @@ import java.nio.ByteBuffer;
 import java.util.Arrays;
 
 /**
- * Implements the PPPoE Type-Length-Value TAGs.
+ * Implements IPCP Type-Length-Value options.
  */
-public class PppoeTlvTag {
-
-    public static final short PPPOED_TAGTYPE_EOL = 0;
-    public static final short PPPOED_TAGTYPE_SERVICENAME = 0x0101;
-    public static final short PPPOED_TAGTYPE_ACNAME = 0x0102;
-
-    public short tagType;
-    public short length; // Length excluded the header (4 bytes minimum header)
-    public byte[] value;
+public class PppTlv {
+    public static final byte IPCPTLV_IP_ADDRESS = 0x03;
+    private byte type;
+    private byte length; // Including the 2 byte of Minimum header
+    private byte[] value;
 
     /**
-     * Get the TLV TAG type.
+     * Get the TLV type.
      *
-     * @return the TLV TAG type
+     * @return the TLV type
      */
-    public short getTagType() {
-        return tagType;
+    public byte getType() {
+        return type;
     }
 
     /**
-     * Set the TLV TAG type.
+     * Set the TLV type.
      *
-     * @param tagType the type to set
+     * @param type the TLV type to set
      * @return this
      */
-    public PppoeTlvTag setTagType(short tagType) {
-        this.tagType = tagType;
+    public PppTlv setType(byte type) {
+        this.type = type;
         return this;
     }
 
     /**
-     * Get the length, number of bytes of value field.
+     * Get the TLV length. The length include the 2 bytes of minimum header
+     * length.
      *
-     * @return the length
+     * @return the TLV length
      */
-    public short getLength() {
+    public byte getLength() {
         return length;
     }
 
     /**
-     * Set the length.
+     * Set the TLV length. Length must include the 2 bytes of minimum header
+     * length.
      *
-     * @param length the length to set excluded the header length
+     * @param length the TLV length to set.
      * @return this
      */
-    public PppoeTlvTag setLength(final short length) {
+    public PppTlv setLength(byte length) {
         this.length = length;
         return this;
     }
 
     /**
-     * The TLV value.
+     * Get the TLV value field as byte array.
      *
-     * @return the value
+     * @return the TLV value field
      */
     public byte[] getValue() {
-        return this.value;
+        return value;
     }
 
     /**
-     * Set the TLV value.
+     * Set the TLV valued field.
      *
-     * @param value the value to set
+     * @param value the TLV value to set
      * @return this
      */
-    public PppoeTlvTag setValue(final byte[] value) {
+    public PppTlv setValue(byte[] value) {
         this.value = value;
         return this;
     }
 
     public byte[] serialize() {
-        final byte[] data = new byte[4 + this.length];
+        final byte[] data = new byte[this.length];
         final ByteBuffer bb = ByteBuffer.wrap(data);
-        bb.putShort(tagType);
-        bb.putShort(length);
+        bb.put(type);
+        bb.put(length);
         if (this.value != null) {
             bb.put(this.value);
         }
         return data;
     }
 
-    public PppoeTlvTag deserialize(final ByteBuffer bb) throws DeserializationException {
-        if (bb.remaining() < 4) {
+    public PppTlv deserialize(final ByteBuffer bb) throws DeserializationException {
+        if (bb.remaining() < 2) {
             throw new DeserializationException(
-                    "Not enough bytes to deserialize PPPoE TLV tag type and length");
+                    "Not enough bytes to deserialize PPP TLV options");
         }
-        this.tagType = bb.getShort();
-        this.length = bb.getShort();
-
-        if (this.length > 0) {
-            this.value = new byte[this.length];
+        this.type = bb.get();
+        this.length = bb.get();
+        if (this.length > 2) {
+            this.value = new byte[this.length - 2];
 
             // if there is an underrun just toss the TLV
-            if (bb.remaining() < this.length) {
+            // Length include the length of the TLV header itself
+            if (bb.remaining() < this.length - 2) {
                 throw new DeserializationException(
-                        "Remaining bytes are less then the length of the PPPoE TLV tag");
+                        "Remaining bytes are less then the length of the PPP TLV tag");
             }
             bb.get(this.value);
+            return this;
+        } else {
+            return null;
         }
-        return this;
     }
 
     @Override
@@ -132,7 +132,7 @@ public class PppoeTlvTag {
         StringBuilder sb = new StringBuilder();
         sb.append("[");
         sb.append("type= ");
-        sb.append(this.tagType);
+        sb.append(this.type);
         sb.append("length= ");
         sb.append(this.length);
         sb.append("value= ");
@@ -154,14 +154,14 @@ public class PppoeTlvTag {
         if (obj == null) {
             return false;
         }
-        if (!(obj instanceof PppoeTlvTag)) {
+        if (!(obj instanceof PppTlv)) {
             return false;
         }
-        final PppoeTlvTag other = (PppoeTlvTag) obj;
+        final PppTlv other = (PppTlv) obj;
         if (this.length != other.length) {
             return false;
         }
-        if (this.tagType != other.tagType) {
+        if (this.type != other.type) {
             return false;
         }
         if (!Arrays.equals(this.value, other.value)) {
@@ -172,6 +172,6 @@ public class PppoeTlvTag {
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(tagType, length, Arrays.hashCode(value));
+        return Objects.hashCode(type, length, Arrays.hashCode(value));
     }
 }
