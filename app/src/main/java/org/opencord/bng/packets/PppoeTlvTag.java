@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.opencord.bng.parser;
+package org.opencord.bng.packets;
 
 import com.google.common.base.Objects;
 import org.onlab.packet.DeserializationException;

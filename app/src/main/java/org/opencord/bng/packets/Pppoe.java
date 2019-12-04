@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.opencord.bng.parser;
+package org.opencord.bng.packets;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.ImmutableMap;
@@ -23,13 +23,10 @@ import org.onlab.packet.Data;
 import org.onlab.packet.Deserializer;
 import org.onlab.packet.Ethernet;
 import org.onlab.packet.IPacket;
-import org.onlab.packet.IPv4;
-import org.onlab.packet.IPv6;
 
 import java.nio.ByteBuffer;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 import static com.google.common.base.MoreObjects.toStringHelper;
 import static org.onlab.packet.PacketUtils.checkHeaderLength;
@@ -87,67 +84,24 @@ public class Pppoe extends BasePacket {
         }
     }
 
-    /**
-     * List of known PPP protocols types.
-     */
-    public enum PppProtocolType {
-        LCP(0xc021, "lcp", true),
-        IPCP(0x8021, "ipcp", true),
-        PAP(0xc023, "pap", true),
-        CHAP(0xc223, "chap", true),
-        IPv4(0x0021, "ipv4", false),
-        IPv6(0x0057, "ipv6", false),
-        NO_PROTOCOL(0, "no_proto", true);
 
-        private final short code;
-        private final String type;
-        private final boolean control;
 
-        /**
-         * Constructs new PPP Protocol types.
-         *
-         * @param code    The PPP Protocol type.
-         * @param type    Textual representation of the PPP Protocol type.
-         * @param control True if is control plane packet, False otherwise.
-         */
-        PppProtocolType(int code, String type, boolean control) {
-            this.code = (short) (code & 0xFFFF);
-            this.type = type;
-            this.control = control;
-        }
-
-        public short code() {
-            return this.code;
-        }
-
-        public String type() {
-            return this.type;
-        }
-
-        public boolean control() {
-            return this.control;
-        }
-
-        public static PppProtocolType lookup(short code) {
-            for (PppProtocolType type : PppProtocolType.values()) {
-                if (code == type.code()) {
-                    return type;
-                }
-            }
-            return NO_PROTOCOL;
-        }
-    }
-
-    public static final Map<Short, Deserializer<? extends IPacket>> PROTOCOL_DESERIALIZER_MAP =
+    public static final ImmutableMap<Short, Deserializer<? extends IPacket>> PROTOCOL_DESERIALIZER_MAP =
             ImmutableMap.<Short, Deserializer<? extends IPacket>>builder()
-                    .put(PppProtocolType.LCP.code(), Lcp.deserializer())
+                    .put(Ppp.PppProtocolType.LCP.code(), Ppp.PppProtocolType.LCP.deserializer())
                     //FIXME: write the correct parser for PAP and CHAP payload
-                    .put(PppProtocolType.PAP.code(), Lcp.deserializer())
-                    .put(PppProtocolType.CHAP.code(), Lcp.deserializer())
-                    .put(PppProtocolType.IPCP.code(), Ipcp.deserializer())
-                    .put(PppProtocolType.IPv4.code(), IPv4.deserializer())
-                    .put(PppProtocolType.IPv6.code(), IPv6.deserializer())
+                    .put(Ppp.PppProtocolType.PAP.code(), Ppp.PppProtocolType.PAP.deserializer())
+                    .put(Ppp.PppProtocolType.CHAP.code(), Ppp.PppProtocolType.CHAP.deserializer())
+                    .put(Ppp.PppProtocolType.IPCP.code(), Ppp.PppProtocolType.IPCP.deserializer())
+                    .put(Ppp.PppProtocolType.IPv4.code(), Ppp.PppProtocolType.IPv4.deserializer())
+                    .put(Ppp.PppProtocolType.IPv6.code(), Ppp.PppProtocolType.IPv6.deserializer())
                     .build();
+//                    .put(PppProtocolType.PAP.code(), Lcp.deserializer())
+//                    .put(PppProtocolType.CHAP.code(), Lcp.deserializer())
+//                    .put(PppProtocolType.IPCP.code(), Ipcp.deserializer())
+//                    .put(PppProtocolType.IPv4.code(), IPv4.deserializer())
+//                    .put(PppProtocolType.IPv6.code(), IPv6.deserializer())
+//                    .build();
 
     // Account of PPPoE standard header
     private static final int HEADER_LENGTH = 6;
@@ -160,7 +114,7 @@ public class Pppoe extends BasePacket {
     protected short payloadLength; // 16bit
 
     // FIXME: use PPPProtocol enum type
-    protected short pppProtocol = 0;
+//    protected short pppProtocol = 0;
 
     //TODO: TLV TAGs (ref. to RFC2516)
     protected PppoeTlvTag acName = null;
@@ -195,9 +149,9 @@ public class Pppoe extends BasePacket {
      *
      * @return the Point-to-Point Protocol
      */
-    public short getPppProtocol() {
-        return this.pppProtocol;
-    }
+//    public short getPppProtocol() {
+//        return this.pppProtocol;
+//    }
 
     /**
      * Get the AC-Name.
@@ -293,10 +247,10 @@ public class Pppoe extends BasePacket {
         bb.put(this.packetType.code);
         bb.putShort(this.sessionId);
         bb.putShort(this.payloadLength);
-        if (this.packetType == PppoeType.SESSION) {
-            // Only session packet have PPP header
-            bb.putShort(this.pppProtocol);
-        } else {
+        if (this.packetType != PppoeType.SESSION) {
+//            // Only session packet have PPP header
+//            bb.putShort(this.pppProtocol);
+//        } else {
             // Only NON session packet have options
             // TLV Tags
             if (acName != null) {
@@ -338,10 +292,13 @@ public class Pppoe extends BasePacket {
             // Check if the PPPoE packet is a SESSION packet
             if (pppoe.packetType == PppoeType.SESSION) {
                 // Parse inner protocols
-                pppoe.pppProtocol = bb.getShort();
+//                pppoe.pppProtocol = bb.getShort();
+                short pppProtocol = bb.getShort();
+                // Rewind of 2 bytes, so PPP deserializer can read its PPP protocol code.
+                bb.position(bb.position()-2);
                 Deserializer<? extends IPacket> deserializer;
-                if (Pppoe.PROTOCOL_DESERIALIZER_MAP.containsKey(pppoe.pppProtocol)) {
-                    deserializer = PROTOCOL_DESERIALIZER_MAP.get(pppoe.pppProtocol);
+                if (Pppoe.PROTOCOL_DESERIALIZER_MAP.containsKey(pppProtocol)) {
+                    deserializer = PROTOCOL_DESERIALIZER_MAP.get(pppProtocol);
                 } else {
                     deserializer = Data.deserializer();
                 }
@@ -362,7 +319,7 @@ public class Pppoe extends BasePacket {
                     if (length - currentIndex < 4) {
                         // Probably the packet was zero-padded to reach the Ethernet minimum length.
                         // Let's skip and accept the packet
-                        // FIXME: is there a smarter way to identify a padded packet?
+                        // FIXME: is there a "smarter" way to identify a padded packet?
                         break;
                     }
                     currentIndex += 4;
@@ -403,7 +360,6 @@ public class Pppoe extends BasePacket {
                 .add("code", Byte.toString(packetType.code))
                 .add("sessionId", Short.toString(sessionId))
                 .add("payloadLength", Short.toString(payloadLength))
-                .add("PPP.protocol", Short.toString(pppProtocol))
                 .toString();
     }
 
@@ -420,7 +376,7 @@ public class Pppoe extends BasePacket {
         if (obj == null) {
             return false;
         }
-        if (!(obj instanceof IpcpTlv)) {
+        if (!(obj instanceof PppTlv)) {
             return false;
         }
         final Pppoe other = (Pppoe) obj;
@@ -437,9 +393,6 @@ public class Pppoe extends BasePacket {
             return false;
         }
         if (this.payloadLength != other.payloadLength) {
-            return false;
-        }
-        if (this.pppProtocol != other.pppProtocol) {
             return false;
         }
         if (this.acName == null) {
@@ -465,7 +418,7 @@ public class Pppoe extends BasePacket {
     @Override
     public int hashCode() {
         return Objects.hashCode(super.hashCode(), version, typeId, packetType, sessionId,
-                payloadLength, pppProtocol, acName, serviceName, optionalTagTlvList);
+                payloadLength, acName, serviceName, optionalTagTlvList);
     }
 
     /**

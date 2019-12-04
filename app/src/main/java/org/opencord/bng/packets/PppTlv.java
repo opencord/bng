@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.opencord.bng.parser;
+package org.opencord.bng.packets;
 
 import com.google.common.base.Objects;
 import org.onlab.packet.DeserializationException;
@@ -25,11 +25,11 @@ import java.util.Arrays;
 /**
  * Implements IPCP Type-Length-Value options.
  */
-public class IpcpTlv {
+public class PppTlv {
 
     public static final byte IPCPTLV_IP_ADDRESS = 0x03;
 
-    public byte type;
+     byte type;
     public byte length; // Including the 2 byte of Minimum header
     public byte[] value;
 
@@ -48,7 +48,7 @@ public class IpcpTlv {
      * @param type the TLV type to set
      * @return this
      */
-    public IpcpTlv setType(byte type) {
+    public PppTlv setType(byte type) {
         this.type = type;
         return this;
     }
@@ -70,7 +70,7 @@ public class IpcpTlv {
      * @param length the TLV length to set.
      * @return this
      */
-    public IpcpTlv setLength(byte length) {
+    public PppTlv setLength(byte length) {
         this.length = length;
         return this;
     }
@@ -90,7 +90,7 @@ public class IpcpTlv {
      * @param value the TLV value to set
      * @return this
      */
-    public IpcpTlv setValue(byte[] value) {
+    public PppTlv setValue(byte[] value) {
         this.value = value;
         return this;
     }
@@ -106,7 +106,7 @@ public class IpcpTlv {
         return data;
     }
 
-    public IpcpTlv deserialize(final ByteBuffer bb) throws DeserializationException {
+    public PppTlv deserialize(final ByteBuffer bb) throws DeserializationException {
         if (bb.remaining() < 2) {
             throw new DeserializationException(
                     "Not enough bytes to deserialize IPCP TLV options");
@@ -155,10 +155,10 @@ public class IpcpTlv {
         if (obj == null) {
             return false;
         }
-        if (!(obj instanceof IpcpTlv)) {
+        if (!(obj instanceof PppTlv)) {
             return false;
         }
-        final IpcpTlv other = (IpcpTlv) obj;
+        final PppTlv other = (PppTlv) obj;
         if (this.length != other.length) {
             return false;
         }

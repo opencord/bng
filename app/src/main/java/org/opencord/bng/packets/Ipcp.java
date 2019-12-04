@@ -14,15 +14,14 @@
  * limitations under the License.
  */
 
-package org.opencord.bng.parser;
+package org.opencord.bng.packets;
 
 import com.google.common.base.Objects;
-import org.onlab.packet.BasePacket;
+import org.onlab.packet.DeserializationException;
 import org.onlab.packet.Deserializer;
 import org.onlab.packet.IpAddress;
 
 import java.nio.ByteBuffer;
-import java.util.LinkedList;
 import java.util.List;
 
 import static com.google.common.base.MoreObjects.toStringHelper;
@@ -32,7 +31,8 @@ import static org.onlab.packet.PacketUtils.checkInput;
 /**
  * Implements the IP Control Protocol (IPCP) packet format.
  */
-public class Ipcp extends BasePacket {
+
+public class Ipcp extends Ppp {
 
     static final int MIN_HEADER_LENGTH = 4;
 
@@ -40,25 +40,15 @@ public class Ipcp extends BasePacket {
     public static final byte ACK = 0x02;
     public static final byte NAK = 0x03;
 
-    protected byte code;
-    protected byte identifier;
-    protected short length; // Payload + header length
+    protected PppTlv ipaddresstlv = null;
 
-    protected IpcpTlv ipaddresstlv = null;
-
-    protected List<IpcpTlv> ipcpTlvList;
-
-    public Ipcp() {
-        super();
-        ipcpTlvList = new LinkedList<>();
-    }
 
     /**
      * Get the IP Address TLV field.
      *
      * @return the IP Address TLV field if present, null otherwise
      */
-    public IpcpTlv getIpAddressTlv() {
+    public PppTlv getIpAddressTlv() {
         return this.ipaddresstlv;
     }
 
@@ -79,7 +69,7 @@ public class Ipcp extends BasePacket {
      * @param ipaddresstlv the IP address TLV to set
      * @return this
      */
-    public Ipcp setIpAddressTlv(IpcpTlv ipaddresstlv) {
+    public Ipcp setIpAddressTlv(PppTlv ipaddresstlv) {
         this.ipaddresstlv = ipaddresstlv;
         return this;
     }
@@ -89,35 +79,8 @@ public class Ipcp extends BasePacket {
      *
      * @return the IPCP TLV field list
      */
-    public List<IpcpTlv> getIpcpTlvList() {
-        return this.ipcpTlvList;
-    }
-
-    /**
-     * Get the IPCP code.
-     *
-     * @return the IPCP code
-     */
-    public byte getCode() {
-        return this.code;
-    }
-
-    /**
-     * Get the IPCP length.
-     *
-     * @return the IPCP length
-     */
-    public short getLength() {
-        return this.length;
-    }
-
-    /**
-     * Get the IPCP identifier.
-     *
-     * @return the IPCP identifier
-     */
-    public short getIdentifier() {
-        return this.identifier;
+    public List<PppTlv> getIpcpTlvList() {
+        return this.pppTlvList;
     }
 
     @Override
@@ -131,8 +94,8 @@ public class Ipcp extends BasePacket {
         if (ipaddresstlv != null) {
             bb.put(ipaddresstlv.serialize());
         }
-        if (this.ipcpTlvList != null) {
-            for (final IpcpTlv tlv : this.ipcpTlvList) {
+        if (this.pppTlvList != null) {
+            for (final PppTlv tlv : this.pppTlvList) {
                 bb.put(tlv.serialize());
             }
         }
@@ -149,104 +112,89 @@ public class Ipcp extends BasePacket {
             checkInput(data, offset, length, MIN_HEADER_LENGTH);
             Ipcp ipcp = new Ipcp();
             ByteBuffer bb = ByteBuffer.wrap(data, offset, length);
+            ipcp.pppProtocol = PppProtocolType.lookup(bb.getShort());
             ipcp.code = bb.get();
             ipcp.identifier = bb.get();
             ipcp.length = bb.getShort();
             int currentIndex = MIN_HEADER_LENGTH;
-            IpcpTlv tlv;
+            PppTlv tlv;
             while (currentIndex < length) {
                 // Each new TLV IPCP must be a minimum of 2 bytes
                 // (containing the type and length fields).
                 currentIndex += 2;
                 checkHeaderLength(length, currentIndex);
-                tlv = new IpcpTlv().deserialize(bb);
+                tlv = new PppTlv().deserialize(bb);
                 // if there was a failure to deserialize stop processing TLVs
                 if (tlv == null) {
                     break;
                 }
                 switch (tlv.getType()) {
-                    case IpcpTlv.IPCPTLV_IP_ADDRESS:
+                    case PppTlv.IPCPTLV_IP_ADDRESS:
                         // Service Name
                         ipcp.ipaddresstlv = tlv;
                         break;
                     default:
-                        ipcp.ipcpTlvList.add(tlv);
+                        ipcp.pppTlvList.add(tlv);
                         break;
                 }
-                currentIndex += tlv.getLength();
+                currentIndex += tlv.getLength() - 2;
+            }
+            if (currentIndex != ipcp.length) {
+                throw new DeserializationException("Error in parsing the packet!");
             }
             // TODO: any other upper layer protocol as payload?
             return ipcp;
         };
     }
 
+//    /**
+//     * Check if the payload of the PPPoE packet passed is IPCP.
+//     *
+//     * @param pppoe Packet to check
+//     * @return True if the packet contains IPCP header
+//     */
+//    public static boolean isIpcp(Pppoe pppoe) {
+//        return pppoe.getPppProtocol() == Pppoe.PppProtocolType.IPCP.code();
+//    }
+
+//    /**
+//     * Check if the current instance contain an IP address TLV field.
+//     *
+//     * @return True if the packet contains IP address TLV field
+//     */
+//    public boolean haveIpAddressTlv() {
+//        return !getIpAddress().isZero() ? true : false;
+//    }
+
     @Override
-    public String toString() {
-        return toStringHelper(getClass())
-                .add("code", code)
-                .add("identifier", identifier)
-                .add("length", length)
-                .add("ipaddresstlv", ipaddresstlv)
-                .add("ipcptlvList", ipcpTlvList)
-                .toString();
+    public int hashCode() {
+        return 31 * super.hashCode() + Objects.hashCode(ipaddresstlv);
     }
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
-    public boolean equals(final Object obj) {
+    public boolean equals(Object obj) {
         if (this == obj) {
             return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
         }
         if (!super.equals(obj)) {
             return false;
         }
-        if (!(obj instanceof Ipcp)) {
-            return false;
-        }
         final Ipcp other = (Ipcp) obj;
-        if (this.code != other.code) {
-            return false;
-        }
-        if (this.identifier != other.identifier) {
-            return false;
-        }
-        if (this.length != other.length) {
-            return false;
-        }
-        if (this.ipaddresstlv != other.ipaddresstlv) {
-            return false;
-        }
-        if (!this.ipcpTlvList.equals(other.ipcpTlvList)) {
-            return false;
-        }
-        return true;
+        return Objects.equal(this.ipaddresstlv, other.ipaddresstlv);
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hashCode(super.hashCode(), code, identifier, length, ipaddresstlv, ipcpTlvList);
-    }
-
-    /**
-     * Check if the payload of the PPPoE packet passed is IPCP.
-     *
-     * @param pppoe Packet to check
-     * @return True if the packet contains IPCP header
-     */
-    public static boolean isIpcp(Pppoe pppoe) {
-        return pppoe.getPppProtocol() == Pppoe.PppProtocolType.IPCP.code();
-    }
-
-    /**
-     * Check if the current instance contain an IP address TLV field.
-     *
-     * @return True if the packet contains IP address TLV field
-     */
-    public boolean haveIpAddressTlv() {
-        return !getIpAddress().isZero() ? true : false;
+    public String toString() {
+        return toStringHelper(this)
+                .add("pppProtocol", pppProtocol)
+                .add("code", code)
+                .add("identifier", identifier)
+                .add("length", length)
+                .add("pppTlvList", pppTlvList)
+                .add("ipaddresstlv", ipaddresstlv)
+                .toString();
     }
 }
