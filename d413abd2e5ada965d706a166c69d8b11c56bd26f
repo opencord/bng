@@ -1,0 +1,757 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e47ef46_80c4697e",
+        "filename": "api/src/main/java/org/opencord/bng/BngService.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-05T00:29:52Z",
+      "side": 1,
+      "message": "Nit: This should be \"set up\", as setup is a noun, not a verb (https://writingexplained.org/setup-vs-set-up-difference). I used to make the same mistake all the time.",
+      "range": {
+        "startLine": 33,
+        "startChar": 7,
+        "endLine": 33,
+        "endChar": 12
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d56c2341_2355d396",
+        "filename": "api/src/main/java/org/opencord/bng/BngStatsEvent.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-05T00:29:52Z",
+      "side": 1,
+      "message": "In ONOS the convention is to name event type with the verb/action last, e.g. \"STATS_UPDATED\". Also, using stats instead of statistics would improve naming consistency.",
+      "range": {
+        "startLine": 44,
+        "startChar": 8,
+        "endLine": 44,
+        "endChar": 25
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b54c4ff8_28e979c0",
+        "filename": "api/src/main/java/org/opencord/bng/BngStatsEventSubject.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-05T00:29:52Z",
+      "side": 1,
+      "message": "I think commented sections can be removed. If you left it here because it\u0027s not part of the Kafka app already, we can take a look at the old implementation in the private repo.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 59
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "814d5a15_ba5ef9ab",
+        "filename": "api/src/main/java/org/opencord/bng/BngStatsEventSubject.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-05T00:29:52Z",
+      "side": 1,
+      "message": "Can be final",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 11
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "61015f30_7a2f0090",
+        "filename": "api/src/main/java/org/opencord/bng/BngStatsEventSubject.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-05T00:29:52Z",
+      "side": 1,
+      "message": "nit: getStats() for conciseness",
+      "range": {
+        "startLine": 68,
+        "startChar": 67,
+        "endLine": 68,
+        "endChar": 86
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eacfa0e3_9513da59",
+        "filename": "api/src/main/java/org/opencord/bng/BngStatsEventSubject.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-05T00:29:52Z",
+      "side": 1,
+      "message": "Unless you think the stats can be changed after an instance of this class is created (bad idea IMO), then it\u0027s usually better to return an unmodifiable representation of the map/set: https://wiki.onosproject.org/display/ONOS/Code+Style+Guidelines#CodeStyleGuidelines-Immutableobjects\n\nI usually prefer to store the immutable representation in the constructor, but I\u0027m not sure if there\u0027s any performance benefit.",
+      "range": {
+        "startLine": 69,
+        "startChar": 15,
+        "endLine": 69,
+        "endChar": 37
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8bfbca4_dd73aa99",
+        "filename": "api/src/main/java/org/opencord/bng/BngStatsEventSubject.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-05T00:29:52Z",
+      "side": 1,
+      "message": "Same as before",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 7
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc70fb5f_fdcb12c4",
+        "filename": "api/src/main/java/org/opencord/bng/BngStatsService.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-05T00:29:52Z",
+      "side": 1,
+      "message": "nit:getStats() for conciseness and consistency with other method getControlStats()",
+      "range": {
+        "startLine": 42,
+        "startChar": 59,
+        "endLine": 42,
+        "endChar": 72
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "916484d1_fa94af56",
+        "filename": "api/src/main/java/org/opencord/bng/PppoeEvent.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-05T00:29:52Z",
+      "side": 1,
+      "message": "nit:These kind of events are...",
+      "range": {
+        "startLine": 22,
+        "startChar": 33,
+        "endLine": 22,
+        "endChar": 55
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23745a03_777d7938",
+        "filename": "api/src/main/java/org/opencord/bng/PppoeEventSubject.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-05T00:29:52Z",
+      "side": 1,
+      "message": "let\u0027s remove commented blocks here as well",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 59
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a222c86_331027aa",
+        "filename": "api/src/main/java/org/opencord/bng/PppoeEventSubject.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-05T00:29:52Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 7
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b79db1d1_9f5205fa",
+        "filename": "api/src/main/java/org/opencord/bng/package-info.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-05T00:29:52Z",
+      "side": 1,
+      "message": "Duplicate Javadoc, can be removed",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 3
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "81361025_58efb445",
+        "filename": "app/src/main/java/org/opencord/bng/BngManager.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-05T00:29:52Z",
+      "side": 1,
+      "message": "I don\u0027t understand this method and the purpose of the input argument. It looks like the method itself can be remove and `unsetBngDevice()` used instead.",
+      "range": {
+        "startLine": 447,
+        "startChar": 0,
+        "endLine": 449,
+        "endChar": 5
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aae692f4_6a09478b",
+        "filename": "app/src/main/java/org/opencord/bng/BngManager.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-05T00:29:52Z",
+      "side": 1,
+      "message": "This line break seems unnecessary",
+      "range": {
+        "startLine": 460,
+        "startChar": 0,
+        "endLine": 461,
+        "endChar": 61
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b1f00b57_b36ea429",
+        "filename": "app/src/main/java/org/opencord/bng/BngStatsManager.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-05T00:29:52Z",
+      "side": 1,
+      "message": "In the P4Runtime driver, the setupBehaviour method is called internally by each public method of the implementation of each behavior, and I suggest we do the same with this implementation of BngProgrammable. Or you should clearly state in the BngProgrammable API that init() should be called every time a new instance of the behavior is created. The first option looks less error prone.",
+      "range": {
+        "startLine": 174,
+        "startChar": 57,
+        "endLine": 174,
+        "endChar": 71
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15436b71_e046bf5d",
+        "filename": "app/src/main/java/org/opencord/bng/PppoeHandlerRelay.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-05T00:29:52Z",
+      "side": 1,
+      "message": "this is implicit and can be removed, at least that\u0027s the convention in ONOS.",
+      "range": {
+        "startLine": 115,
+        "startChar": 45,
+        "endLine": 115,
+        "endChar": 52
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f8bc2e5_ac0ee2c8",
+        "filename": "app/src/main/java/org/opencord/bng/PppoeHandlerRelay.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-05T00:29:52Z",
+      "side": 1,
+      "message": "By the implementation of the activate and deactivate methods, I would expect this to be null before calling the activate method. So it looks like you can remove the initialization part of this variable.",
+      "range": {
+        "startLine": 122,
+        "startChar": 63,
+        "endLine": 122,
+        "endChar": 81
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02f6ed49_2b684d39",
+        "filename": "app/src/main/java/org/opencord/bng/PppoeHandlerRelay.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-05T00:29:52Z",
+      "side": 1,
+      "message": "nit: calling this newPppoeRelayConfig would improve readability of the if condition below (instead of relying on this.)",
+      "range": {
+        "startLine": 155,
+        "startChar": 25,
+        "endLine": 155,
+        "endChar": 41
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "770e7cff_f280cc95",
+        "filename": "app/src/main/java/org/opencord/bng/PppoeHandlerRelay.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-05T00:29:52Z",
+      "side": 1,
+      "message": "remove?",
+      "range": {
+        "startLine": 321,
+        "startChar": 0,
+        "endLine": 327,
+        "endChar": 62
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e1a0f13_4600582b",
+        "filename": "app/src/main/java/org/opencord/bng/attachment/PppoeAttachment.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-05T00:29:52Z",
+      "side": 1,
+      "message": "It looks like you have a great use case for an abstract class to store attributes and provide getters common to different types of attachments (e.g, IPoE). If you prefer not to create the abstract class in this change, can you please add a comment suggesting so?",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 34
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d2e358cb_4f4f9271",
+        "filename": "app/src/main/java/org/opencord/bng/attachment/PppoeAttachment.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-05T00:29:52Z",
+      "side": 1,
+      "message": "Specifying attributes as final clarifies right away the purpose of the class, i.e. to store immutable state. I can\u0027t see any setter here, so I suggest to make all attributes as final.",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 50,
+        "endChar": 34
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5471c79f_98acc9fe",
+        "filename": "app/src/main/java/org/opencord/bng/attachment/PppoeAttachment.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-05T00:29:52Z",
+      "side": 1,
+      "message": "Final?",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 27
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "743f9ef9_12f933b3",
+        "filename": "app/src/main/java/org/opencord/bng/attachment/PppoeAttachment.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-05T00:29:52Z",
+      "side": 1,
+      "message": "Nit: \"add\" is usually used to add values to a collection. in this case, \"set\" or \"with\" is more preferred, e.g. setOnuSerial or withOnuSerial",
+      "range": {
+        "startLine": 220,
+        "startChar": 23,
+        "endLine": 220,
+        "endChar": 35
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "896da7fd_0237bafa",
+        "filename": "app/src/main/java/org/opencord/bng/cli/ActivateAttachment.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-05T00:29:52Z",
+      "side": 1,
+      "message": "to facilitate learning for ONOS users, it is usually better to name commands with the object first and verb after, e.g. attachment-activate, so by typing attachment one gets autocompletion for all related commands. Can you please make this change to all commands?",
+      "range": {
+        "startLine": 29,
+        "startChar": 32,
+        "endLine": 29,
+        "endChar": 51
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7d202243_dbe7c7e0",
+        "filename": "app/src/main/java/org/opencord/bng/cli/ActivateAttachment.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-05T00:29:52Z",
+      "side": 1,
+      "message": "I think you should have a different command to \"add\" an attachment, instead of embedding creation in the activate logic. The reason is that there\u0027s a remove command, which makes it natural to expect an add one.\n\nIf you want to reduce the number of commands, the activate one can be modified to take an input boolean parameters to signal whether the line should be enabled or not. E.g. attachment-enable  -d (where  -d means disable).\n\nFinally, I think \"enable/disable\" is a better wording, as activate has generally meaning of \"To put into action, to put to work\", which doesn\u0027t make much sense in this context.",
+      "range": {
+        "startLine": 31,
+        "startChar": 13,
+        "endLine": 31,
+        "endChar": 31
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c99cddc0_41eb8b56",
+        "filename": "app/src/main/java/org/opencord/bng/cli/Attachments.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-05T00:29:52Z",
+      "side": 1,
+      "message": "following ONOS  conventions you can rename this to \"attachments\" (as in \"hosts\", \"devices\", etc)",
+      "range": {
+        "startLine": 28,
+        "startChar": 32,
+        "endLine": 28,
+        "endChar": 47
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6faa0f9d_b6fbc062",
+        "filename": "app/src/main/java/org/opencord/bng/cli/BngAppConfig.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-05T00:29:52Z",
+      "side": 1,
+      "message": "bng is redundant",
+      "range": {
+        "startLine": 26,
+        "startChar": 32,
+        "endLine": 26,
+        "endChar": 36
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "51230ac3_b315a532",
+        "filename": "app/src/main/java/org/opencord/bng/cli/BngAppConfig.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-05T00:29:52Z",
+      "side": 1,
+      "message": "If you no longer need to debug then this command can be removed",
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76126e39_61f2a3b4",
+        "filename": "app/src/main/java/org/opencord/bng/cli/ControlPacketsStats.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-05T00:29:52Z",
+      "side": 1,
+      "message": "As commented elsewhere, a think the \"BNG programmable\" terminology belongs to the internals of ONOS and this app. Operators would probably feel more familiar with messages like \"No BNG user plane device configured\". This comment applies to other commands as well. Can you please fix all of them?",
+      "range": {
+        "startLine": 38,
+        "startChar": 19,
+        "endLine": 38,
+        "endChar": 38
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8665aa1f_e53c3c7b",
+        "filename": "app/src/main/java/org/opencord/bng/cli/DeactivateAttachment.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-05T00:29:52Z",
+      "side": 1,
+      "message": "attachment-disable or remove command and re-use attachment-enable command instead",
+      "range": {
+        "startLine": 29,
+        "startChar": 32,
+        "endLine": 29,
+        "endChar": 53
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0c69df7c_41b2335f",
+        "filename": "app/src/main/java/org/opencord/bng/cli/RemoveAttachment.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-05T00:29:52Z",
+      "side": 1,
+      "message": "attachment-remove",
+      "range": {
+        "startLine": 28,
+        "startChar": 32,
+        "endLine": 28,
+        "endChar": 49
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2adfef1b_24b58eed",
+        "filename": "app/src/main/java/org/opencord/bng/config/BngConfig.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-05T00:29:52Z",
+      "side": 1,
+      "message": "I think you can just use \"bng\" as we agreed that to be the app name,",
+      "range": {
+        "startLine": 27,
+        "startChar": 38,
+        "endLine": 27,
+        "endChar": 44
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "93c4611b_091c1602",
+        "filename": "app/src/main/java/org/opencord/bng/package-info.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-05T00:29:52Z",
+      "side": 1,
+      "message": "duplicate, please remove",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 3
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    }
+  ]
+}
