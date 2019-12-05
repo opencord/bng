@@ -1279,6 +1279,24 @@
     },
     {
       "key": {
+        "uuid": "6c973f27_cf8d7f64",
+        "filename": "app/src/main/java/org/opencord/bng/SimpleAttachmentEventHandler.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-05T00:29:52Z",
+      "side": 1,
+      "message": "I think it would make more sense to delegate the generation of IDs to the BngProgrammable implementation, as that is the source of truth when it comes to the maximum number of attachments supported, and so the space of IDs. Or you could provide means to map IDs from the northbound to a given space that is compatible with the P4 implementation, but that sounds much harder to maintain at the level of the driver behavior. Anyways, as long as we can keep track of this issue (CORD Jira), this doesn\u0027t need to be fixed here.",
+      "parentUuid": "529fafda_2f695b85",
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "873817f1_f11cbe9d",
         "filename": "app/src/main/java/org/opencord/bng/SimpleAttachmentEventHandler.java",
         "patchSetId": 2
@@ -1314,6 +1332,30 @@
       "side": 1,
       "message": "The attachment ID is used by the FabricBngProgrammable as the Line ID.\nThe main problem is that Line ID is used as the index to access counters in the data plane. For this reason, I added the modulo operation.\nI agree with you that this is implementation-specific, but up to now, I didn\u0027t find a way to generalize it because is still not clear which fields uniquely identify an attachment.\n\nI think we should discuss a stateless way to generate an ID from the control plane perspective.",
       "parentUuid": "873817f1_f11cbe9d",
+      "range": {
+        "startLine": 134,
+        "startChar": 68,
+        "endLine": 134,
+        "endChar": 92
+      },
+      "revId": "6c24b493e8455fe00c4a0a25c564362070e308de",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37cd1a05_d4110e55",
+        "filename": "app/src/main/java/org/opencord/bng/SimpleAttachmentEventHandler.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-05T00:29:52Z",
+      "side": 1,
+      "message": "I understand the problem. Are you planning to keep track of the issue somewhere as suggested in my previous comment? Right now this implementation supports only up to 1000 services, and this limit is hidden deep in an event listener... which is hard to spot when the time to scale will come. I suggest extracting the value `1000` in a constant named \"MAX_ATTACHMENTS.",
+      "parentUuid": "07cfc312_c886229c",
       "range": {
         "startLine": 134,
         "startChar": 68,
