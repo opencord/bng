@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "263073fb_acef02d7",
+        "filename": "api/src/main/java/org/opencord/bng/BngService.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-06T18:18:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e47ef46_80c4697e",
+      "range": {
+        "startLine": 33,
+        "startChar": 7,
+        "endLine": 33,
+        "endChar": 12
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d56c2341_2355d396",
         "filename": "api/src/main/java/org/opencord/bng/BngStatsEvent.java",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2019-12-05T00:29:52Z",
       "side": 1,
       "message": "In ONOS the convention is to name event type with the verb/action last, e.g. \"STATS_UPDATED\". Also, using stats instead of statistics would improve naming consistency.",
+      "range": {
+        "startLine": 44,
+        "startChar": 8,
+        "endLine": 44,
+        "endChar": 25
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d2713488_32e33685",
+        "filename": "api/src/main/java/org/opencord/bng/BngStatsEvent.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-06T18:18:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d56c2341_2355d396",
       "range": {
         "startLine": 44,
         "startChar": 8,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "8bb11001_c53535df",
+        "filename": "api/src/main/java/org/opencord/bng/BngStatsEventSubject.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-06T18:18:14Z",
+      "side": 1,
+      "message": "Yes, I forgot to remove them.\nDone",
+      "parentUuid": "b54c4ff8_28e979c0",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 59
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "814d5a15_ba5ef9ab",
         "filename": "api/src/main/java/org/opencord/bng/BngStatsEventSubject.java",
         "patchSetId": 7
@@ -82,6 +154,30 @@
       "writtenOn": "2019-12-05T00:29:52Z",
       "side": 1,
       "message": "Can be final",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 11
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b05fbba_888d4919",
+        "filename": "api/src/main/java/org/opencord/bng/BngStatsEventSubject.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-06T18:18:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "814d5a15_ba5ef9ab",
       "range": {
         "startLine": 51,
         "startChar": 4,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "74f01441_d786273a",
+        "filename": "api/src/main/java/org/opencord/bng/BngStatsEventSubject.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-06T18:18:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61015f30_7a2f0090",
+      "range": {
+        "startLine": 68,
+        "startChar": 67,
+        "endLine": 68,
+        "endChar": 86
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eacfa0e3_9513da59",
         "filename": "api/src/main/java/org/opencord/bng/BngStatsEventSubject.java",
         "patchSetId": 7
@@ -128,6 +248,30 @@
       "writtenOn": "2019-12-05T00:29:52Z",
       "side": 1,
       "message": "Unless you think the stats can be changed after an instance of this class is created (bad idea IMO), then it\u0027s usually better to return an unmodifiable representation of the map/set: https://wiki.onosproject.org/display/ONOS/Code+Style+Guidelines#CodeStyleGuidelines-Immutableobjects\n\nI usually prefer to store the immutable representation in the constructor, but I\u0027m not sure if there\u0027s any performance benefit.",
+      "range": {
+        "startLine": 69,
+        "startChar": 15,
+        "endLine": 69,
+        "endChar": 37
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f897d212_38fa1045",
+        "filename": "api/src/main/java/org/opencord/bng/BngStatsEventSubject.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-06T18:18:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eacfa0e3_9513da59",
       "range": {
         "startLine": 69,
         "startChar": 15,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "405b5067_62850918",
+        "filename": "api/src/main/java/org/opencord/bng/BngStatsEventSubject.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-06T18:18:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8bfbca4_dd73aa99",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 7
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc70fb5f_fdcb12c4",
         "filename": "api/src/main/java/org/opencord/bng/BngStatsService.java",
         "patchSetId": 7
@@ -174,6 +342,30 @@
       "writtenOn": "2019-12-05T00:29:52Z",
       "side": 1,
       "message": "nit:getStats() for conciseness and consistency with other method getControlStats()",
+      "range": {
+        "startLine": 42,
+        "startChar": 59,
+        "endLine": 42,
+        "endChar": 72
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "161d54e2_66f808be",
+        "filename": "api/src/main/java/org/opencord/bng/BngStatsService.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-06T18:18:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc70fb5f_fdcb12c4",
       "range": {
         "startLine": 42,
         "startChar": 59,
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "40703966_46807e19",
+        "filename": "api/src/main/java/org/opencord/bng/PppoeEvent.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-06T18:18:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "916484d1_fa94af56",
+      "range": {
+        "startLine": 22,
+        "startChar": 33,
+        "endLine": 22,
+        "endChar": 55
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23745a03_777d7938",
         "filename": "api/src/main/java/org/opencord/bng/PppoeEventSubject.java",
         "patchSetId": 7
@@ -220,6 +436,30 @@
       "writtenOn": "2019-12-05T00:29:52Z",
       "side": 1,
       "message": "let\u0027s remove commented blocks here as well",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 59
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ae01a42_138db7d1",
+        "filename": "api/src/main/java/org/opencord/bng/PppoeEventSubject.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-06T18:18:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23745a03_777d7938",
       "range": {
         "startLine": 30,
         "startChar": 0,
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "e36223c8_494513cc",
+        "filename": "api/src/main/java/org/opencord/bng/PppoeEventSubject.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-06T18:18:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a222c86_331027aa",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 7
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b79db1d1_9f5205fa",
         "filename": "api/src/main/java/org/opencord/bng/package-info.java",
         "patchSetId": 7
@@ -266,6 +530,30 @@
       "writtenOn": "2019-12-05T00:29:52Z",
       "side": 1,
       "message": "Duplicate Javadoc, can be removed",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 3
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "238dc8ea_a1771bed",
+        "filename": "api/src/main/java/org/opencord/bng/package-info.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-06T18:18:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b79db1d1_9f5205fa",
       "range": {
         "startLine": 21,
         "startChar": 0,
@@ -301,6 +589,30 @@
     },
     {
       "key": {
+        "uuid": "1f798b13_08cbb8df",
+        "filename": "app/src/main/java/org/opencord/bng/BngManager.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-06T18:18:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81361025_58efb445",
+      "range": {
+        "startLine": 447,
+        "startChar": 0,
+        "endLine": 449,
+        "endChar": 5
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aae692f4_6a09478b",
         "filename": "app/src/main/java/org/opencord/bng/BngManager.java",
         "patchSetId": 7
@@ -312,6 +624,30 @@
       "writtenOn": "2019-12-05T00:29:52Z",
       "side": 1,
       "message": "This line break seems unnecessary",
+      "range": {
+        "startLine": 460,
+        "startChar": 0,
+        "endLine": 461,
+        "endChar": 61
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0918802_fb6dc7c3",
+        "filename": "app/src/main/java/org/opencord/bng/BngManager.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-06T18:18:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aae692f4_6a09478b",
       "range": {
         "startLine": 460,
         "startChar": 0,
@@ -347,6 +683,30 @@
     },
     {
       "key": {
+        "uuid": "4c93d139_9282a11e",
+        "filename": "app/src/main/java/org/opencord/bng/BngStatsManager.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-06T18:18:14Z",
+      "side": 1,
+      "message": "Understood, I\u0027ll go with the first option. I will modify the BngProgrammable implementation accordingly. I\u0027ll push this modification on a separate Gerrit patch, waiting for the BngProgrammable patch to be merged",
+      "parentUuid": "b1f00b57_b36ea429",
+      "range": {
+        "startLine": 174,
+        "startChar": 57,
+        "endLine": 174,
+        "endChar": 71
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "15436b71_e046bf5d",
         "filename": "app/src/main/java/org/opencord/bng/PppoeHandlerRelay.java",
         "patchSetId": 7
@@ -358,6 +718,30 @@
       "writtenOn": "2019-12-05T00:29:52Z",
       "side": 1,
       "message": "this is implicit and can be removed, at least that\u0027s the convention in ONOS.",
+      "range": {
+        "startLine": 115,
+        "startChar": 45,
+        "endLine": 115,
+        "endChar": 52
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71037b77_6854255d",
+        "filename": "app/src/main/java/org/opencord/bng/PppoeHandlerRelay.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-06T18:18:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15436b71_e046bf5d",
       "range": {
         "startLine": 115,
         "startChar": 45,
@@ -393,6 +777,30 @@
     },
     {
       "key": {
+        "uuid": "5eb26158_fbc97bf2",
+        "filename": "app/src/main/java/org/opencord/bng/PppoeHandlerRelay.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-06T18:18:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f8bc2e5_ac0ee2c8",
+      "range": {
+        "startLine": 122,
+        "startChar": 63,
+        "endLine": 122,
+        "endChar": 81
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "02f6ed49_2b684d39",
         "filename": "app/src/main/java/org/opencord/bng/PppoeHandlerRelay.java",
         "patchSetId": 7
@@ -416,6 +824,30 @@
     },
     {
       "key": {
+        "uuid": "1db54bfc_d6e4240c",
+        "filename": "app/src/main/java/org/opencord/bng/PppoeHandlerRelay.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-06T18:18:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02f6ed49_2b684d39",
+      "range": {
+        "startLine": 155,
+        "startChar": 25,
+        "endLine": 155,
+        "endChar": 41
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "770e7cff_f280cc95",
         "filename": "app/src/main/java/org/opencord/bng/PppoeHandlerRelay.java",
         "patchSetId": 7
@@ -427,6 +859,30 @@
       "writtenOn": "2019-12-05T00:29:52Z",
       "side": 1,
       "message": "remove?",
+      "range": {
+        "startLine": 321,
+        "startChar": 0,
+        "endLine": 327,
+        "endChar": 62
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dbc55a02_306d1a53",
+        "filename": "app/src/main/java/org/opencord/bng/PppoeHandlerRelay.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-06T18:18:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "770e7cff_f280cc95",
       "range": {
         "startLine": 321,
         "startChar": 0,
@@ -485,6 +941,54 @@
     },
     {
       "key": {
+        "uuid": "8b5132b8_7cb42d99",
+        "filename": "app/src/main/java/org/opencord/bng/attachment/PppoeAttachment.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-06T18:18:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2e358cb_4f4f9271",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 50,
+        "endChar": 34
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6e5a7f8_fffc1f72",
+        "filename": "app/src/main/java/org/opencord/bng/attachment/PppoeAttachment.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-06T18:18:14Z",
+      "side": 1,
+      "message": "Moved to abstract class\nDone",
+      "parentUuid": "5e1a0f13_4600582b",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 34
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5471c79f_98acc9fe",
         "filename": "app/src/main/java/org/opencord/bng/attachment/PppoeAttachment.java",
         "patchSetId": 7
@@ -496,6 +1000,30 @@
       "writtenOn": "2019-12-05T00:29:52Z",
       "side": 1,
       "message": "Final?",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 27
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "184cf5de_c2d51f82",
+        "filename": "app/src/main/java/org/opencord/bng/attachment/PppoeAttachment.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-06T18:18:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5471c79f_98acc9fe",
       "range": {
         "startLine": 54,
         "startChar": 0,
@@ -531,6 +1059,30 @@
     },
     {
       "key": {
+        "uuid": "54cc95c5_5b32f8d1",
+        "filename": "app/src/main/java/org/opencord/bng/attachment/PppoeAttachment.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-06T18:18:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "743f9ef9_12f933b3",
+      "range": {
+        "startLine": 220,
+        "startChar": 23,
+        "endLine": 220,
+        "endChar": 35
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "896da7fd_0237bafa",
         "filename": "app/src/main/java/org/opencord/bng/cli/ActivateAttachment.java",
         "patchSetId": 7
@@ -542,6 +1094,30 @@
       "writtenOn": "2019-12-05T00:29:52Z",
       "side": 1,
       "message": "to facilitate learning for ONOS users, it is usually better to name commands with the object first and verb after, e.g. attachment-activate, so by typing attachment one gets autocompletion for all related commands. Can you please make this change to all commands?",
+      "range": {
+        "startLine": 29,
+        "startChar": 32,
+        "endLine": 29,
+        "endChar": 51
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b31d5f6_cfe70b07",
+        "filename": "app/src/main/java/org/opencord/bng/cli/ActivateAttachment.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-06T18:18:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "896da7fd_0237bafa",
       "range": {
         "startLine": 29,
         "startChar": 32,
@@ -577,6 +1153,30 @@
     },
     {
       "key": {
+        "uuid": "086918aa_f30919ad",
+        "filename": "app/src/main/java/org/opencord/bng/cli/ActivateAttachment.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-06T18:18:14Z",
+      "side": 1,
+      "message": "I might have misunderstood your comment.\nAnyway, this command is not creating a new attachment, but just updating an already available attachment.\nI modified the command to support enable/disable of attachment.\nI added the attachment-add command\nDone",
+      "parentUuid": "7d202243_dbe7c7e0",
+      "range": {
+        "startLine": 31,
+        "startChar": 13,
+        "endLine": 31,
+        "endChar": 31
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c99cddc0_41eb8b56",
         "filename": "app/src/main/java/org/opencord/bng/cli/Attachments.java",
         "patchSetId": 7
@@ -588,6 +1188,30 @@
       "writtenOn": "2019-12-05T00:29:52Z",
       "side": 1,
       "message": "following ONOS  conventions you can rename this to \"attachments\" (as in \"hosts\", \"devices\", etc)",
+      "range": {
+        "startLine": 28,
+        "startChar": 32,
+        "endLine": 28,
+        "endChar": 47
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7a15655_e6aaa772",
+        "filename": "app/src/main/java/org/opencord/bng/cli/Attachments.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-06T18:18:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c99cddc0_41eb8b56",
       "range": {
         "startLine": 28,
         "startChar": 32,
@@ -640,6 +1264,24 @@
     },
     {
       "key": {
+        "uuid": "f9acdf23_b4bf4b4a",
+        "filename": "app/src/main/java/org/opencord/bng/cli/BngAppConfig.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-06T18:18:14Z",
+      "side": 1,
+      "message": "Removed\nDone",
+      "parentUuid": "51230ac3_b315a532",
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76126e39_61f2a3b4",
         "filename": "app/src/main/java/org/opencord/bng/cli/ControlPacketsStats.java",
         "patchSetId": 7
@@ -651,6 +1293,30 @@
       "writtenOn": "2019-12-05T00:29:52Z",
       "side": 1,
       "message": "As commented elsewhere, a think the \"BNG programmable\" terminology belongs to the internals of ONOS and this app. Operators would probably feel more familiar with messages like \"No BNG user plane device configured\". This comment applies to other commands as well. Can you please fix all of them?",
+      "range": {
+        "startLine": 38,
+        "startChar": 19,
+        "endLine": 38,
+        "endChar": 38
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "21667510_2cc508a9",
+        "filename": "app/src/main/java/org/opencord/bng/cli/ControlPacketsStats.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-06T18:18:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76126e39_61f2a3b4",
       "range": {
         "startLine": 38,
         "startChar": 19,
@@ -686,6 +1352,30 @@
     },
     {
       "key": {
+        "uuid": "3ee26f15_05314dfd",
+        "filename": "app/src/main/java/org/opencord/bng/cli/DeactivateAttachment.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-06T18:18:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8665aa1f_e53c3c7b",
+      "range": {
+        "startLine": 29,
+        "startChar": 32,
+        "endLine": 29,
+        "endChar": 53
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0c69df7c_41b2335f",
         "filename": "app/src/main/java/org/opencord/bng/cli/RemoveAttachment.java",
         "patchSetId": 7
@@ -697,6 +1387,30 @@
       "writtenOn": "2019-12-05T00:29:52Z",
       "side": 1,
       "message": "attachment-remove",
+      "range": {
+        "startLine": 28,
+        "startChar": 32,
+        "endLine": 28,
+        "endChar": 49
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5aabd85_01152d24",
+        "filename": "app/src/main/java/org/opencord/bng/cli/RemoveAttachment.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-06T18:18:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c69df7c_41b2335f",
       "range": {
         "startLine": 28,
         "startChar": 32,
@@ -732,6 +1446,30 @@
     },
     {
       "key": {
+        "uuid": "f9a70eca_ea563a9c",
+        "filename": "app/src/main/java/org/opencord/bng/config/BngConfig.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-06T18:18:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2adfef1b_24b58eed",
+      "range": {
+        "startLine": 27,
+        "startChar": 38,
+        "endLine": 27,
+        "endChar": 44
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93c4611b_091c1602",
         "filename": "app/src/main/java/org/opencord/bng/package-info.java",
         "patchSetId": 7
@@ -743,6 +1481,30 @@
       "writtenOn": "2019-12-05T00:29:52Z",
       "side": 1,
       "message": "duplicate, please remove",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 3
+      },
+      "revId": "d413abd2e5ada965d706a166c69d8b11c56bd26f",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c93a4f36_c7a05dc8",
+        "filename": "app/src/main/java/org/opencord/bng/package-info.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-06T18:18:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93c4611b_091c1602",
       "range": {
         "startLine": 21,
         "startChar": 0,
