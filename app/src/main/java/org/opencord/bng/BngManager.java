@@ -350,7 +350,6 @@ public class BngManager implements HostProvider, BngService {
 
             // Initialize behavior
             try {
-                bngProgrammable.init(appId);
                 bngProgrammable.cleanUp(appId);
                 bngProgrammable.init(appId);
                 // FIXME: we can improve this re-registration, keeping track of which attachment

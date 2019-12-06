@@ -168,13 +168,7 @@ public class BngStatsManager
 
     private BngProgrammable getBngProgrammable(DeviceId deviceId) {
         if (deviceId != null && deviceService.isAvailable(deviceId)) {
-            BngProgrammable bngProgrammable = deviceService.getDevice(deviceId).as(BngProgrammable.class);
-            // FIXME: I shouldn't call the init method here, this method is
-            //  triggering the punt-to-cpu rules to be installed.
-            //  Anyway if not init method is called, the setupBehaviour of
-            //  FabricBngProgrammable is never called
-            bngProgrammable.init(appId);
-            return bngProgrammable;
+            return deviceService.getDevice(deviceId).as(BngProgrammable.class);
         }
         return null;
     }
