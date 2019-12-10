@@ -22,6 +22,30 @@
       "revId": "5d1e3c997c8e781b4bd660fa3227b081cfa88728",
       "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79436a2e_264aa5ee",
+        "filename": "app/src/main/java/org/opencord/bng/SimpleAttachmentEventHandler.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-10T17:27:03Z",
+      "side": 1,
+      "message": "addedAttachment set is already just the string IDs, so this call should behave as expected. I will rename the set to addedAttachmentId to improve readability.",
+      "parentUuid": "ccd9fca0_fe480035",
+      "range": {
+        "startLine": 139,
+        "startChar": 20,
+        "endLine": 141,
+        "endChar": 21
+      },
+      "revId": "5d1e3c997c8e781b4bd660fa3227b081cfa88728",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
     }
   ]
 }
