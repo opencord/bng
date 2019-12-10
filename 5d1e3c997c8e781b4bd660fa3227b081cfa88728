@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ccd9fca0_fe480035",
+        "filename": "app/src/main/java/org/opencord/bng/SimpleAttachmentEventHandler.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-10T06:56:57Z",
+      "side": 1,
+      "message": "Membership for HashSet depends on .equals() and hash(), which you have not implemented, so this check is unlikely to behave the way you want to, i.e., any new instance will be added to the set independently of its content. What you should do instead, is keeping a set of just the string IDs.",
+      "range": {
+        "startLine": 139,
+        "startChar": 20,
+        "endLine": 141,
+        "endChar": 21
+      },
+      "revId": "5d1e3c997c8e781b4bd660fa3227b081cfa88728",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    }
+  ]
+}
