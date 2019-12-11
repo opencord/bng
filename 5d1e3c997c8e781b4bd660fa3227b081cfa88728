@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "6edba163_508a8b1a",
+        "filename": "api/src/main/java/org/opencord/bng/BngService.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-11T07:08:28Z",
+      "side": 1,
+      "message": "If we agree on adopting a map-like abstraction, then the key (currently attachmentId) should be taken out of BngAttachment and passed here as an input argument, exactly as in a map, where values are independent of the chosen key.\n\nThis would make the API straightforward (right now it doesn\u0027t look like a map API and one has to look at the BngAttachment interface to figure out where attachmentId comes from in the other methods). There are other benefits, such as unambiguous equality definition for BngAttachment which does not depend on the arbitrary key but on the attachment attributes only.",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 51
+      },
+      "revId": "5d1e3c997c8e781b4bd660fa3227b081cfa88728",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ccd9fca0_fe480035",
         "filename": "app/src/main/java/org/opencord/bng/SimpleAttachmentEventHandler.java",
         "patchSetId": 11
@@ -37,6 +60,30 @@
       "side": 1,
       "message": "addedAttachment set is already just the string IDs, so this call should behave as expected. I will rename the set to addedAttachmentId to improve readability.",
       "parentUuid": "ccd9fca0_fe480035",
+      "range": {
+        "startLine": 139,
+        "startChar": 20,
+        "endLine": 141,
+        "endChar": 21
+      },
+      "revId": "5d1e3c997c8e781b4bd660fa3227b081cfa88728",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "400d77ed_92a4318c",
+        "filename": "app/src/main/java/org/opencord/bng/SimpleAttachmentEventHandler.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2019-12-11T07:08:28Z",
+      "side": 1,
+      "message": "I  should stop reviewing code after bed time... thanks for clarifying the name. I suggest calling it \"attachmentKey\" to give an idea of a map-like global identifier.",
+      "parentUuid": "79436a2e_264aa5ee",
       "range": {
         "startLine": 139,
         "startChar": 20,
