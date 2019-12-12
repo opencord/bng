@@ -113,6 +113,7 @@ public class PppoeHandlerRelay
     private ApplicationId appId;
     private InternalPacketProcessor internalPacketProcessor;
     private PppoeRelayConfig pppoeRelayConfig;
+    private MacAddress macPppoeServer;
 
     /**
      * Ephemeral internal map to trace the attachment information. This map is
@@ -146,6 +147,7 @@ public class PppoeHandlerRelay
         pppoeRelayConfig = null;
         mapSrcMacToAttInfo = null;
         internalPacketProcessor = null;
+        macPppoeServer = null;
 
         log.info("PPPoE Handler Relay deactivated");
     }
@@ -216,6 +218,12 @@ public class PppoeHandlerRelay
 
         if (heardOn.equals(pppoeRelayConfig.getPppoeServerConnectPoint())) {
             // DOWNSTREAM PACKET: from the PPPoE server to the attachment.
+
+            // Learn the MAC address of the PPPoE server
+            if (macPppoeServer == null) {
+                macPppoeServer = eth.getSourceMAC();
+            }
+
             MacAddress dstMac = eth.getDestinationMAC();
             log.debug("Packet to the attachment: {}", eth);
             if (!mapSrcMacToAttInfo.containsKey(dstMac)) {
@@ -232,7 +240,6 @@ public class PppoeHandlerRelay
 
             // Generate the events for this attachment
             manageAttachmentStateDownstream(eth, pppoe, attInfo);
-
             modPacketForAttachment(eth, attInfo, bnguMac);
 
             log.debug("Packet modified as: {}", eth);
@@ -464,7 +471,11 @@ public class PppoeHandlerRelay
         }
         // Modify DST Mac Address with the one of the PPPoE Server
         if (!eth.getDestinationMAC().isBroadcast()) {
-            eth.setDestinationMACAddress(pppoeRelayConfig.getPppoeMacAddress());
+            if (macPppoeServer == null) {
+                log.warn("NO Mac address for PPPoE server available! Dropping packet");
+                return;
+            }
+            eth.setDestinationMACAddress(macPppoeServer);
         }
     }
 

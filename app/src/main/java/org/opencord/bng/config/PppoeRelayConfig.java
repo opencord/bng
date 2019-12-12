@@ -16,7 +16,6 @@
 
 package org.opencord.bng.config;
 
-import org.onlab.packet.MacAddress;
 import org.onosproject.core.ApplicationId;
 import org.onosproject.net.ConnectPoint;
 import org.onosproject.net.config.Config;
@@ -29,12 +28,11 @@ public class PppoeRelayConfig extends Config<ApplicationId> {
 
     private static final String PPPOE_SERVER_CONNECT_POINT = "pppoeServerConnectPoint";
     private static final String OLT_CONNECT_POINT = "oltConnectPoint";
-    private static final String PPPOE_MAC_ADDRESS = "pppoeMacAddress";
 
     @Override
     public boolean isValid() {
-        return hasOnlyFields(PPPOE_SERVER_CONNECT_POINT, OLT_CONNECT_POINT, PPPOE_MAC_ADDRESS) &&
-                hasFields(PPPOE_SERVER_CONNECT_POINT, OLT_CONNECT_POINT, PPPOE_MAC_ADDRESS);
+        return hasOnlyFields(PPPOE_SERVER_CONNECT_POINT, OLT_CONNECT_POINT) &&
+                hasFields(PPPOE_SERVER_CONNECT_POINT, OLT_CONNECT_POINT);
     }
 
     /**
@@ -53,15 +51,6 @@ public class PppoeRelayConfig extends Config<ApplicationId> {
      */
     public ConnectPoint getAsgToOltConnectPoint() {
         return ConnectPoint.deviceConnectPoint(object.path(OLT_CONNECT_POINT).asText());
-    }
-
-    /**
-     * Gets the PPPoE server MAC address.
-     *
-     * @return PPPoE server MAC address
-     */
-    public MacAddress getPppoeMacAddress() {
-        return MacAddress.valueOf(object.path(PPPOE_MAC_ADDRESS).asText());
     }
 }
 
