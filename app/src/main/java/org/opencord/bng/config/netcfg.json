@@ -4,7 +4,6 @@
       "pppoerelay": {
         "oltConnectPoint": "device:asg1/128",
         "pppoeServerConnectPoint": "device:asg1/140",
-        "pppoeMacAddress": "3c:fd:fe:9e:6e:40"
       },
       "bng": {
         "bnguDeviceId": "device:asg1"
