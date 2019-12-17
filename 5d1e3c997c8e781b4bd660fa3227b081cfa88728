@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d60ecc15_39365b77",
+        "filename": "api/src/main/java/org/opencord/bng/BngService.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2019-12-17T02:31:43Z",
+      "side": 1,
+      "message": "Modified the API also for the BngStatsService",
+      "parentUuid": "6edba163_508a8b1a",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 51
+      },
+      "revId": "5d1e3c997c8e781b4bd660fa3227b081cfa88728",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ccd9fca0_fe480035",
         "filename": "app/src/main/java/org/opencord/bng/SimpleAttachmentEventHandler.java",
         "patchSetId": 11
