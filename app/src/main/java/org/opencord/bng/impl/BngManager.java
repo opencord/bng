@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.opencord.bng;
+package org.opencord.bng.impl;
 
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Maps;
@@ -48,6 +48,9 @@ import org.onosproject.net.host.HostProviderRegistry;
 import org.onosproject.net.host.HostProviderService;
 import org.onosproject.net.link.LinkService;
 import org.onosproject.net.provider.ProviderId;
+import org.opencord.bng.BngAttachment;
+import org.opencord.bng.BngService;
+import org.opencord.bng.PppoeBngAttachment;
 import org.opencord.bng.config.BngConfig;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
@@ -68,7 +71,7 @@ import static org.onosproject.net.config.basics.SubjectFactories.APP_SUBJECT_FAC
 /**
  * Implements the network level BNG service API to manage attachments.
  */
-@Component(immediate = true, service = BngService.class)
+@Component(immediate = true)
 public class BngManager implements HostProvider, BngService {
     public static final String BNG_APP = "org.opencord.bng";
 
@@ -188,7 +191,7 @@ public class BngManager implements HostProvider, BngService {
             // If the BNG user plane is not available, or the attachment is not connected to
             // the correct BNG user planee, accept anyway the attachment.
             // Check if the attachment is correctly connected to the BNG device when that device will show up.
-            log.info("BNG user planee not available, attachment accepted but not programmed");
+            log.info("BNG user plane not available, attachment accepted but not programmed");
         }
         log.info("PPPoE Attachment created/updated: {}", pppoeAttachment);
         registeredAttachment.put(attachmentKey, Pair.of(pppoeAttachment, hostId));

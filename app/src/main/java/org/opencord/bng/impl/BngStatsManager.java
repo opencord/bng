@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.opencord.bng;
+package org.opencord.bng.impl;
 
 import com.google.common.collect.Maps;
 import org.onlab.util.SharedScheduledExecutors;
@@ -27,6 +27,12 @@ import org.onosproject.net.DeviceId;
 import org.onosproject.net.behaviour.BngProgrammable;
 import org.onosproject.net.device.DeviceService;
 import org.onosproject.net.pi.runtime.PiCounterCellData;
+import org.opencord.bng.BngAttachment;
+import org.opencord.bng.BngService;
+import org.opencord.bng.BngStatsEvent;
+import org.opencord.bng.BngStatsEventListener;
+import org.opencord.bng.BngStatsEventSubject;
+import org.opencord.bng.BngStatsService;
 import org.osgi.service.component.ComponentContext;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
@@ -43,11 +49,10 @@ import java.util.Properties;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
-import static org.opencord.bng.OsgiPropertyConstants.BNG_STATISTICS_PROBE_RATE;
-import static org.opencord.bng.OsgiPropertyConstants.BNG_STATISTICS_PROBE_RATE_DEFAULT;
+import static org.opencord.bng.impl.OsgiPropertyConstants.BNG_STATISTICS_PROBE_RATE;
+import static org.opencord.bng.impl.OsgiPropertyConstants.BNG_STATISTICS_PROBE_RATE_DEFAULT;
 
 @Component(immediate = true,
-        service = BngStatsService.class,
         property = {
                 BNG_STATISTICS_PROBE_RATE + ":Long=" + BNG_STATISTICS_PROBE_RATE_DEFAULT,
         }

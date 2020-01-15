@@ -14,12 +14,13 @@
  * limitations under the License.
  */
 
-package org.opencord.bng;
+package org.opencord.bng.impl;
 
 import org.onlab.packet.IpAddress;
 import org.onlab.packet.MacAddress;
 import org.onlab.packet.VlanId;
 import org.onosproject.net.ConnectPoint;
+import org.opencord.bng.PppoeEventSubject;
 
 public final class BngUtils {
 
