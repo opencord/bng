@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.opencord.bng;
+package org.opencord.bng.impl;
 
 import com.google.common.collect.Maps;
 import org.onlab.packet.Data;
@@ -44,6 +44,12 @@ import org.onosproject.net.packet.OutboundPacket;
 import org.onosproject.net.packet.PacketContext;
 import org.onosproject.net.packet.PacketProcessor;
 import org.onosproject.net.packet.PacketService;
+import org.opencord.bng.BngAttachment;
+import org.opencord.bng.PppoeBngAttachment;
+import org.opencord.bng.PppoeBngControlHandler;
+import org.opencord.bng.PppoeEvent;
+import org.opencord.bng.PppoeEventListener;
+import org.opencord.bng.PppoeEventSubject;
 import org.opencord.bng.config.PppoeRelayConfig;
 import org.opencord.bng.packets.GenericPpp;
 import org.opencord.bng.packets.Ipcp;
@@ -67,7 +73,7 @@ import java.util.stream.Collectors;
 
 import static org.onosproject.net.config.basics.SubjectFactories.APP_SUBJECT_FACTORY;
 
-@Component(immediate = true, service = PppoeBngControlHandler.class)
+@Component(immediate = true)
 public class PppoeHandlerRelay
         extends AbstractListenerManager<PppoeEvent, PppoeEventListener>
         implements PppoeBngControlHandler {

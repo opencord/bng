@@ -31,9 +31,9 @@ import org.onosproject.core.ApplicationId;
 import org.onosproject.core.CoreService;
 import org.onosproject.net.ConnectPoint;
 import org.opencord.bng.BngAttachment;
-import org.opencord.bng.BngManager;
+import org.opencord.bng.impl.BngManager;
 import org.opencord.bng.BngService;
-import org.opencord.bng.BngUtils;
+import org.opencord.bng.impl.BngUtils;
 import org.opencord.bng.PppoeBngAttachment;
 
 @Service

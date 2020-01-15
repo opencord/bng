@@ -27,16 +27,15 @@
 
     <groupId>org.opencord</groupId>
     <artifactId>bng</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <description>BNG Control app</description>
     <url>http://opencord.org</url>
 
     <properties>
-<!--     TODO:   Update Sadis to 4.0.1-SNAPSHOT-->
-        <sadis.api.version>4.0.0-SNAPSHOT</sadis.api.version>
-        <olt.api.version>4.0.0-SNAPSHOT</olt.api.version>
+        <sadis.api.version>4.0.1</sadis.api.version>
+        <olt.api.version>4.0.0</olt.api.version>
     </properties>
 
     <modules>
@@ -48,7 +47,7 @@
         <repository>
             <id>central</id>
             <name>Central Repository</name>
-            <url>http://repo.maven.apache.org/maven2</url>
+            <url>https://repo.maven.apache.org/maven2</url>
             <layout>default</layout>
             <snapshots>
                 <enabled>false</enabled>
@@ -59,7 +58,6 @@
                 <checksumPolicy>fail</checksumPolicy>
             </releases>
         </repository>
-
         <repository>
             <id>snapshots</id>
             <url>https://oss.sonatype.org/content/repositories/snapshots</url>

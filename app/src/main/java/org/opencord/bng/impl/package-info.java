@@ -14,16 +14,7 @@
  * limitations under the License.
  */
 
-package org.opencord.bng;
-
-public final class OsgiPropertyConstants {
-
-    public static final String ENABLE_LOCAL_EVENT_HANDLER = "enableLocalEventHandler";
-    public static final boolean ENABLE_LOCAL_EVENT_HANDLER_DEFAULT = true;
-    public static final String BNG_STATISTICS_PROBE_RATE = "bngStatisticsProbeRate";
-    public static final long BNG_STATISTICS_PROBE_RATE_DEFAULT = 5000;
-
-    private OsgiPropertyConstants() {
-    }
-
-}
+/**
+ * BNG application.
+ */
+package org.opencord.bng.impl;

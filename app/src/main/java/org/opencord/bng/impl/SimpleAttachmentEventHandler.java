@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.opencord.bng;
+package org.opencord.bng.impl;
 
 import org.glassfish.jersey.internal.guava.Sets;
 import org.onlab.util.Tools;
@@ -22,6 +22,13 @@ import org.onosproject.cfg.ComponentConfigService;
 import org.onosproject.core.ApplicationId;
 import org.onosproject.core.CoreService;
 import org.onosproject.store.service.StorageService;
+import org.opencord.bng.BngAttachment;
+import org.opencord.bng.BngService;
+import org.opencord.bng.PppoeBngAttachment;
+import org.opencord.bng.PppoeBngControlHandler;
+import org.opencord.bng.PppoeEvent;
+import org.opencord.bng.PppoeEventListener;
+import org.opencord.bng.PppoeEventSubject;
 import org.osgi.service.component.ComponentContext;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
@@ -36,15 +43,14 @@ import java.util.Dictionary;
 import java.util.Properties;
 import java.util.Set;
 
-import static org.opencord.bng.OsgiPropertyConstants.ENABLE_LOCAL_EVENT_HANDLER;
-import static org.opencord.bng.OsgiPropertyConstants.ENABLE_LOCAL_EVENT_HANDLER_DEFAULT;
+import static org.opencord.bng.impl.OsgiPropertyConstants.ENABLE_LOCAL_EVENT_HANDLER;
+import static org.opencord.bng.impl.OsgiPropertyConstants.ENABLE_LOCAL_EVENT_HANDLER_DEFAULT;
 
 /**
  * Service to intercept the PPPoE Handler events and trigger the creation of a
  * new attachment in BNG service.
  */
 @Component(immediate = true,
-        service = SimpleAttachmentEventHandler.class,
         property = {
                 ENABLE_LOCAL_EVENT_HANDLER + ":Boolean=" + ENABLE_LOCAL_EVENT_HANDLER_DEFAULT,
         }
