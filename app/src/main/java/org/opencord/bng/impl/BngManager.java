@@ -253,22 +253,19 @@ public class BngManager implements HostProvider, BngService {
                                                   ConnectPoint asgConnectPoint,
                                                   ConnectPoint oltConnectPoint,
                                                   String onuSerialNumber) {
-//        Set<HostLocation> hostLocation = Set.of(new HostLocation(oltConnectPoint.deviceId(),
-//                oltConnectPoint.port(),
-//                System.currentTimeMillis()));
-//        var auxLocation = String.join(",", asgConnectPoint.toString());
-        // FIXME: remove this hostLocation and decomment the above rows when aux-location patch will be merged
-        Set<HostLocation> hostLocation = Set.of(new HostLocation(asgConnectPoint.deviceId(),
-                                                                 asgConnectPoint.port(),
+        Set<HostLocation> hostLocation = Set.of(new HostLocation(oltConnectPoint.deviceId(),
+                                                                 oltConnectPoint.port(),
                                                                  System.currentTimeMillis()));
+        Set<HostLocation> auxLocation = Set.of(new HostLocation(asgConnectPoint.deviceId(),
+                                                                asgConnectPoint.port(),
+                                                                System.currentTimeMillis()));
         var annotations = DefaultAnnotations.builder()
-//                .set(AUX_LOCATIONS_ANNOTATION, auxLocation)
                 .set(ONU_ANNOTATION, onuSerialNumber)
                 .build();
         Set<IpAddress> ips = hostIp != null
                 ? ImmutableSet.of(hostIp) : ImmutableSet.of();
         return new DefaultHostDescription(hostMac, sTag,
-                                          hostLocation,
+                                          hostLocation, auxLocation,
                                           ips, cTag, EthType.EtherType.QINQ.ethType(),
                                           false, annotations);
     }
@@ -287,7 +284,11 @@ public class BngManager implements HostProvider, BngService {
         // Try to remove host even if the BNG user plane device is not available
         hostProviderService.hostVanished(hostToBeRemoved);
         if (bngProgrammableAvailable()) {
-            bngProgrammable.removeAttachment(regAttachment);
+            try {
+                bngProgrammable.removeAttachment(regAttachment);
+            } catch (BngProgrammableException ex) {
+                log.error("Exception when removing the attachment: " + ex.getMessage());
+            }
         } else {
             log.info("BNG user plane not available!");
         }

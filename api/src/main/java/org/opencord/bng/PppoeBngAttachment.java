@@ -49,11 +49,6 @@ public final class PppoeBngAttachment extends BngAttachment {
         return new Builder();
     }
 
-    // TODO: remove when BngProgrammable API are updated!
-    @Override
-    public BngProgrammable.AttachmentId attachmentId() {
-        return null;
-    }
 
     @Override
     public BngProgrammable.Attachment.AttachmentType type() {

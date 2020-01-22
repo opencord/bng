@@ -456,8 +456,6 @@ public class PppoeHandlerRelay
      * @param eth Packet to be modified
      */
     private void modPacketForPPPoEServer(Ethernet eth) {
-        // TODO: rewrite it. Retrieve information about the interface where
-        //  PPPoE Server is connected and apply them to the packet
         Set<Interface> interfaces = interfaceService.getInterfacesByPort(pppoeRelayConfig.getPppoeServerConnectPoint());
         if (interfaces != null &&
                 interfaces.iterator().hasNext() &&

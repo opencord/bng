@@ -138,8 +138,6 @@ public abstract class BngAttachment implements BngProgrammable.Attachment {
 
     /**
      * Abstract builder of attachments.
-     * <p>
-     * TODO: javadoc
      */
     public abstract static class BngBuilder {
         ApplicationId appId;
