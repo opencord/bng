@@ -132,7 +132,9 @@ public class PppoeHandlerRelay
     /**
      * Ephemeral internal map to trace the attachment information. This map is
      * mainly used to modify the packet towards the PPPoE server or towards the
-     * attachment. FIXME: this map should be cleaned after some time.
+     * attachment.
+     * FIXME: this map should be cleaned after some time.
+     * FIXME: consider the case of user that moves around
      */
     private Map<MacAddress, BngAttachment> mapSrcMacToAttInfo;
 
