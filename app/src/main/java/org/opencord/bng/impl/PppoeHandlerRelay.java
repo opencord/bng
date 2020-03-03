@@ -559,11 +559,11 @@ public class PppoeHandlerRelay
                             (portName.contains("-") && !portName.endsWith("-1"))) {
                         return false;
                     }
-                    var info = sadisService.getSubscriberInfoService()
+                    var subInfo = sadisService.getSubscriberInfoService()
                             .get(portName);
-                    return info != null &&
-                            Objects.equals(cTag, info.cTag()) &&
-                            Objects.equals(sTag, info.sTag());
+                    return subInfo != null && subInfo.uniTagList().stream()
+                            .anyMatch(info -> Objects.equals(cTag, info.getPonCTag()) &&
+                                    Objects.equals(sTag, info.getPonSTag()));
                 })
                 .map(port -> new ConnectPoint(port.element().id(), port.number()))
                 .collect(Collectors.toSet());
