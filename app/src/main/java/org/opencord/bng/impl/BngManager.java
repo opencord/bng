@@ -488,7 +488,6 @@ public class BngManager implements HostProvider, BngService {
                     case DEVICE_ADDED:
                     case DEVICE_UPDATED:
                     case DEVICE_AVAILABILITY_CHANGED:
-                        // FIXME: do I need the IF?
                         if (deviceService.isAvailable(deviceId)) {
                             log.warn("Event: {}, SETTING BNG device", event.type());
                             setBngDevice(deviceId);
