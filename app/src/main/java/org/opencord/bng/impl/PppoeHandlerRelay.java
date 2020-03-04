@@ -429,6 +429,8 @@ public class PppoeHandlerRelay
                 if (lcp.getCode() == GenericPpp.CODE_TERM_REQ) {
                     log.info("LCP Termination request from PPPoE server");
                     eventType = PppoeEvent.EventType.SESSION_TERMINATION;
+                    // When session termination push the correct IP in the event
+                    assignedIpAddress = attInfo.ipAddress();
                 }
                 break;
 
@@ -442,6 +444,8 @@ public class PppoeHandlerRelay
                         case PADT:
                             log.info("PADT received from PPPoE server");
                             eventType = PppoeEvent.EventType.SESSION_TERMINATION;
+                            // When session termination push the correct IP in the event
+                            assignedIpAddress = attInfo.ipAddress();
                             break;
                         default:
                     }
@@ -547,7 +551,8 @@ public class PppoeHandlerRelay
 
         var oltConnectPoints = oltDeviceIds.stream()
                 .flatMap(deviceId -> deviceService.getPorts(deviceId).stream())
-                .filter(Port::isEnabled)
+                // You could filter the enabled ports only, but this can create
+                // problems when ONU are disabled but subscriber is still auth.
                 .filter(port -> {
                     var portName = port.annotations().value("portName");
                     // FIXME: here we support a single UNI per ONU port
