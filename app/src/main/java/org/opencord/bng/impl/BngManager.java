@@ -340,6 +340,10 @@ public class BngManager implements HostProvider, BngService {
                 log.debug("BNG device {} already initialized", deviceId);
                 return;
             }
+            if (!deviceService.isAvailable(deviceId)) {
+                log.info("BNG device is currently unavailable, skip set BNG Device");
+                return;
+            }
             if (!isBngProgrammable(deviceId)) {
                 log.warn("{} is not BNG-U", deviceId);
                 return;
@@ -361,8 +365,8 @@ public class BngManager implements HostProvider, BngService {
                 //  In this way we do not need to cleanUp the bngProgrammable every time it come back online.
                 //  If there is any already registered attachment, try to re-setup their attachment.
                 resubmitRegisteredAttachment();
-
                 bnguInitialized.set(true);
+                log.info("BNG device setup successful!");
             } catch (BngProgrammableException e) {
                 log.error("Error in BNG user plane, {}", e.getMessage());
             }
@@ -406,6 +410,7 @@ public class BngManager implements HostProvider, BngService {
     private void unsetBngDevice() {
         synchronized (bnguInitialized) {
             if (bngProgrammable != null) {
+                log.info("BNG unset, cleanup");
                 try {
                     bngProgrammable.cleanUp(appId);
                 } catch (BngProgrammableException e) {
@@ -484,10 +489,10 @@ public class BngManager implements HostProvider, BngService {
                     case DEVICE_UPDATED:
                     case DEVICE_AVAILABILITY_CHANGED:
                         // FIXME: do I need the IF?
-                        //if (deviceService.isAvailable(deviceId)) {
-                        log.warn("Event: {}, SETTING BNG device", event.type());
-                        setBngDevice(deviceId);
-                        //}
+                        if (deviceService.isAvailable(deviceId)) {
+                            log.warn("Event: {}, SETTING BNG device", event.type());
+                            setBngDevice(deviceId);
+                        }
                         break;
                     case DEVICE_REMOVED:
                     case DEVICE_SUSPENDED:
