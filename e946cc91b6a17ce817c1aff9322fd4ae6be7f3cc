@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec8c7ecd_8337b949",
+        "filename": "app/src/main/java/org/opencord/bng/impl/BngManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2020-03-23T17:01:32Z",
+      "side": 1,
+      "message": "nit: terminology is inconsistent, it should be BNG-U or BNG. Same thing for the operation, here it is referred as “set”, but below is “program” and “set up”. Consistency is good because it makes it easier to process logs (humans and machines). I suggest we stick with “BNG-U set up” to refer to this phase.",
+      "revId": "e946cc91b6a17ce817c1aff9322fd4ae6be7f3cc",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "80d5620f_07ef4f88",
+        "filename": "app/src/main/java/org/opencord/bng/impl/BngManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1000381
+      },
+      "writtenOn": "2020-03-23T17:01:32Z",
+      "side": 1,
+      "message": "Debug?",
+      "range": {
+        "startLine": 492,
+        "startChar": 0,
+        "endLine": 492,
+        "endChar": 28
+      },
+      "revId": "e946cc91b6a17ce817c1aff9322fd4ae6be7f3cc",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    }
+  ]
+}
