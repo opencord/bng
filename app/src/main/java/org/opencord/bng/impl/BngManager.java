@@ -140,7 +140,7 @@ public class BngManager implements HostProvider, BngService {
             try {
                 bngProgrammable.cleanUp(appId);
             } catch (BngProgrammableException e) {
-                log.error("Error cleaning-up the BNG pipeline, {}", e.getMessage());
+                log.error("Error cleaning-up the BNG-U, {}", e.getMessage());
             }
         }
         deviceService.removeListener(deviceListener);
@@ -166,7 +166,7 @@ public class BngManager implements HostProvider, BngService {
             log.info("Attachment already registered: {}", attachment.toString());
             return;
         }
-        // FIXME: it could register anyway the attachment but do not program it on the BNG data-plane device.
+        // FIXME: it could register anyway the attachment but do not program it on the BNG-U.
         if (attachment.type() != BngProgrammable.Attachment.AttachmentType.PPPoE) {
             log.warn("Attachment type not supported, rejecting attachment: {}", attachmentKey);
             return;
@@ -189,8 +189,8 @@ public class BngManager implements HostProvider, BngService {
             }
         } else {
             // If the BNG user plane is not available, or the attachment is not connected to
-            // the correct BNG user planee, accept anyway the attachment.
-            // Check if the attachment is correctly connected to the BNG device when that device will show up.
+            // the correct BNG user plane, accept anyway the attachment.
+            // Check if the attachment is correctly connected to the BNG user plane when that device will show up.
             log.info("BNG user plane not available, attachment accepted but not programmed");
         }
         log.info("PPPoE Attachment created/updated: {}", pppoeAttachment);
@@ -199,7 +199,7 @@ public class BngManager implements HostProvider, BngService {
 
     private Optional<ConnectPoint> getAsgConnectPoint(ConnectPoint oltConnectPoint) {
         try {
-            // Here I suppose that each OLT can be connected to a SINGLE ASG that is BNG U capable
+            // Here I suppose that each OLT can be connected to a SINGLE ASG that is BNG user plane capable
             return Optional.of(linkService.getDeviceEgressLinks(oltConnectPoint.deviceId()).stream()
                                        .filter(link -> isBngProgrammable(link.dst().deviceId()))
                                        .map(link -> link.dst())
@@ -288,7 +288,7 @@ public class BngManager implements HostProvider, BngService {
 
         final HostId hostToBeRemoved = HostId.hostId(regAttachment.macAddress(), regAttachment.sTag());
         registeredAttachment.remove(attachmentKey);
-        // Try to remove host even if the BNG user plane device is not available
+        // Try to remove host even if the BNG user plane is not available
         hostProviderService.hostVanished(hostToBeRemoved);
         if (bngProgrammableAvailable()) {
             try {
@@ -297,7 +297,7 @@ public class BngManager implements HostProvider, BngService {
                 log.error("Exception when removing the attachment: " + ex.getMessage());
             }
         } else {
-            log.info("BNG user plane not available!");
+            log.info("BNG-U not available!");
         }
         log.info("Attachment {} removed successfully!", regAttachment);
     }
@@ -337,7 +337,11 @@ public class BngManager implements HostProvider, BngService {
     private void setBngDevice(DeviceId deviceId) {
         synchronized (bnguInitialized) {
             if (bnguInitialized.get()) {
-                log.debug("BNG device {} already initialized", deviceId);
+                log.debug("BNG-U {} already initialized", deviceId);
+                return;
+            }
+            if (!deviceService.isAvailable(deviceId)) {
+                log.info("BNG-U is currently unavailable, skip setup");
                 return;
             }
             if (!isBngProgrammable(deviceId)) {
@@ -350,7 +354,7 @@ public class BngManager implements HostProvider, BngService {
             }
 
             bngProgrammable = deviceService.getDevice(deviceId).as(BngProgrammable.class);
-            log.info("Program BNG-U device {}", deviceId);
+            log.info("Setup BNG-U: {}", deviceId);
 
             // Initialize behavior
             try {
@@ -361,10 +365,10 @@ public class BngManager implements HostProvider, BngService {
                 //  In this way we do not need to cleanUp the bngProgrammable every time it come back online.
                 //  If there is any already registered attachment, try to re-setup their attachment.
                 resubmitRegisteredAttachment();
-
                 bnguInitialized.set(true);
+                log.info("BNG-U setup successful!");
             } catch (BngProgrammableException e) {
-                log.error("Error in BNG user plane, {}", e.getMessage());
+                log.error("Error setup BNG-U, {}", e.getMessage());
             }
         }
     }
@@ -406,10 +410,11 @@ public class BngManager implements HostProvider, BngService {
     private void unsetBngDevice() {
         synchronized (bnguInitialized) {
             if (bngProgrammable != null) {
+                log.info("BNG-U cleanup");
                 try {
                     bngProgrammable.cleanUp(appId);
                 } catch (BngProgrammableException e) {
-                    log.error("Error in BNG user plane, {}", e.getMessage());
+                    log.error("Error in BNG-U, {}", e.getMessage());
                 }
                 bngProgrammable = null;
                 bnguInitialized.set(false);
@@ -483,11 +488,10 @@ public class BngManager implements HostProvider, BngService {
                     case DEVICE_ADDED:
                     case DEVICE_UPDATED:
                     case DEVICE_AVAILABILITY_CHANGED:
-                        // FIXME: do I need the IF?
-                        //if (deviceService.isAvailable(deviceId)) {
-                        log.warn("Event: {}, SETTING BNG device", event.type());
-                        setBngDevice(deviceId);
-                        //}
+                        if (deviceService.isAvailable(deviceId)) {
+                            log.debug("Event: {}, setting BNG-U", event.type());
+                            setBngDevice(deviceId);
+                        }
                         break;
                     case DEVICE_REMOVED:
                     case DEVICE_SUSPENDED:
