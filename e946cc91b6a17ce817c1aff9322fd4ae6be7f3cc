@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f72cbd27_ed9d3b02",
+        "filename": "app/src/main/java/org/opencord/bng/impl/BngManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2020-03-23T17:16:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec8c7ecd_8337b949",
+      "revId": "e946cc91b6a17ce817c1aff9322fd4ae6be7f3cc",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "80d5620f_07ef4f88",
         "filename": "app/src/main/java/org/opencord/bng/impl/BngManager.java",
         "patchSetId": 2
@@ -30,6 +48,30 @@
       "writtenOn": "2020-03-23T17:01:32Z",
       "side": 1,
       "message": "Debug?",
+      "range": {
+        "startLine": 492,
+        "startChar": 0,
+        "endLine": 492,
+        "endChar": 28
+      },
+      "revId": "e946cc91b6a17ce817c1aff9322fd4ae6be7f3cc",
+      "serverId": "2a2bfe1b-c5c2-48ed-9ac8-16438ab24388",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf028f3c_ccecc0c3",
+        "filename": "app/src/main/java/org/opencord/bng/impl/BngManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1000461
+      },
+      "writtenOn": "2020-03-23T17:16:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80d5620f_07ef4f88",
       "range": {
         "startLine": 492,
         "startChar": 0,
