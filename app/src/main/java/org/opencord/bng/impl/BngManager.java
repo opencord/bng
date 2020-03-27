@@ -253,26 +253,19 @@ public class BngManager implements HostProvider, BngService {
                                                   ConnectPoint asgConnectPoint,
                                                   ConnectPoint oltConnectPoint,
                                                   String onuSerialNumber) {
-//        FIXME: use auxLocation when ONOS bug is fixed.
-//        Set<HostLocation> auxLocation = Set.of(new HostLocation(asgConnectPoint.deviceId(),
-//                                                                asgConnectPoint.port(),
-//                                                                System.currentTimeMillis()));
-//        Set<HostLocation> hostLocation = Set.of(new HostLocation(oltConnectPoint.deviceId(),
-//                                                                 oltConnectPoint.port(),
-//                                                                 System.currentTimeMillis()));
-
-        Set<HostLocation> hostLocation = Set.of(new HostLocation(asgConnectPoint.deviceId(),
-                                                        asgConnectPoint.port(),
-                                                        System.currentTimeMillis()));
-
+        Set<HostLocation> hostLocation = Set.of(new HostLocation(oltConnectPoint.deviceId(),
+                                                                 oltConnectPoint.port(),
+                                                                 System.currentTimeMillis()));
+        Set<HostLocation> auxLocation = Set.of(new HostLocation(asgConnectPoint.deviceId(),
+                                                                asgConnectPoint.port(),
+                                                                System.currentTimeMillis()));
         var annotations = DefaultAnnotations.builder()
                 .set(ONU_ANNOTATION, onuSerialNumber)
                 .build();
         Set<IpAddress> ips = hostIp != null
                 ? ImmutableSet.of(hostIp) : ImmutableSet.of();
         return new DefaultHostDescription(hostMac, sTag,
-                                          hostLocation,
-//                                          auxLocation,
+                                          hostLocation, auxLocation,
                                           ips, cTag, EthType.EtherType.QINQ.ethType(),
                                           false, annotations);
     }
