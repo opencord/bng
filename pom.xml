@@ -70,6 +70,7 @@
     </repositories>
     <build>
         <plugins>
+
             <!-- SpotBugs Static Analysis -->
             <plugin>
                 <groupId>com.github.spotbugs</groupId>
